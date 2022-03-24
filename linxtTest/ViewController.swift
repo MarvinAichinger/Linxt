@@ -86,55 +86,77 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             gestureView.transform.d = 4
         }
         
+        var newX = gestureView.center.x
+        
+        if(gestureView.frame.maxX <= UIScreen.main.bounds.maxX){
+            newX = UIScreen.main.bounds.maxX-20 - gestureView.frame.width/2
+        }
+        
+        if(gestureView.frame.minX >= UIScreen.main.bounds.minX){
+            newX = UIScreen.main.bounds.minX+20 + gestureView.frame.width/2
+        }
+        
+        gestureView.center = CGPoint(
+          x: newX,
+          y: gestureView.center.y
+        )
+        
         sender.scale = 1
         
     }
     
     
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
+            
+              let translation = sender.translation(in: view)
+
+              guard let gestureView = sender.view else {
+                return
+              }
         
-        let translation = sender.translation(in: view)
-
-        if let gestureView = sender.view {
-                
-            gestureView.center = CGPoint(
-                x: gestureView.center.x + translation.x,
-                y: gestureView.center.y + translation.y
-            )
-
-            sender.setTranslation(.zero, in: view)
+  
+        
+        print(gestureView.center.x)
             
-            /*if (self.monkeyImage.frame.intersects(self.bananaImage.frame)) {
-                self.bananaImage.center.x = 0
-                self.bananaImage.center.y = -10
-                incrementCounter()
-            }*/
-            
-            guard sender.state == .ended else {
-              return
-            }
-
-            let velocity = sender.velocity(in: view)
-            let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
-            let slideMultiplier = magnitude / 200
-
-
-            let slideFactor = 1
-
-            var finalPoint = CGPoint(
-                x: gestureView.center.x + (velocity.x * CGFloat(slideFactor)),
-                y: gestureView.center.y + (velocity.y * CGFloat(slideFactor))
-            )
-
-
-            finalPoint.x = min(max(finalPoint.x, 0), view.bounds.width)
-            finalPoint.y = min(max(finalPoint.y, 0), view.bounds.height)
-
-            
+            var newX = gestureView.center.x + translation.x
+            var newY = gestureView.center.y + translation.y
+        
+        print(newX)
+        print(translation.x)
+        
+        
+        if(translation.x < 0 && gestureView.frame.maxX <= UIScreen.main.bounds.maxX){
+            newX = UIScreen.main.bounds.maxX-20 - gestureView.frame.width/2
         }
+        
+        if(translation.x > 0 && gestureView.frame.minX >= UIScreen.main.bounds.minX){
+            newX = UIScreen.main.bounds.minX+20 + gestureView.frame.width/2
+        }
+        
+        
+        
+                print(newX)
+        
+        //newX = gestureView.frame.maxX > self.accessibilityFrame.size.width ? newX : gestureView.center.x
+
+              gestureView.center = CGPoint(
+                x: newX,
+                y: gestureView.center.y + translation.y
+              )
+
+              sender.setTranslation(.zero, in: view)
+        
         
     }
     
     
 }
 
+extension ViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(
+      _ gestureRecognizer: UIGestureRecognizer,
+      shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
+      return true
+    }
+}
