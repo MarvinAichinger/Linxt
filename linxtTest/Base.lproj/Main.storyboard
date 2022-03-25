@@ -34,11 +34,11 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="tpk-tu-gVd">
                                         <rect key="frame" x="0.0" y="0.0" width="2" height="2"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mmV-Kb-btO">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mmV-Kb-btO">
                                             <rect key="frame" x="0.0" y="0.0" width="2" height="2"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" name="AccentColor"/>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" name="AccentColor"/>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

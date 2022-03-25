@@ -11,6 +11,9 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     
+    let noOfCellsInRow = 24
+    var widthOfCell = 1.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -22,18 +25,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         //let size = collectionView.bounds.width / 24
-        
-        let noOfCellsInRow = 24
 
 
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
 
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
-            + (flowLayout.minimumInteritemSpacing * CGFloat(noOfCellsInRow - 1))
+            + (flowLayout.minimumInteritemSpacing * CGFloat(self.noOfCellsInRow - 1))
 
-        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(noOfCellsInRow))
-
+        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(self.noOfCellsInRow))
+        
+        self.widthOfCell = Double(size)
+        
         return CGSize(width: size, height: size)
         
 
@@ -42,6 +45,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
+        print("Row: \(floor(Double(indexPath.row / self.noOfCellsInRow)))")
+        print("Column: \(indexPath.row % self.noOfCellsInRow)")
     }
     
     
@@ -53,13 +58,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 576
+        return self.noOfCellsInRow * self.noOfCellsInRow
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
     
         // Configure the cell
+        
+        //round corners
+        cell.contentView.clipsToBounds = true
+        let radius = cell.contentView.frame.size.width / 2
+        cell.contentView.layer.cornerRadius = CGFloat(self.widthOfCell / 2.0)
     
         return cell
     }
@@ -107,19 +117,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
-            
-              let translation = sender.translation(in: view)
-
-              guard let gestureView = sender.view else {
-                return
-              }
         
-  
+        let translation = sender.translation(in: view)
+        
+        guard let gestureView = sender.view else {
+            return
+        }
+        
+        
         
         print(gestureView.center.x)
-            
-            var newX = gestureView.center.x + translation.x
-            var newY = gestureView.center.y + translation.y
+        
+        var newX = gestureView.center.x + translation.x
+        var newY = gestureView.center.y + translation.y
         
         print(newX)
         print(translation.x)
@@ -135,16 +145,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         
         
-                print(newX)
+        print(newX)
         
         //newX = gestureView.frame.maxX > self.accessibilityFrame.size.width ? newX : gestureView.center.x
-
-              gestureView.center = CGPoint(
-                x: newX,
-                y: gestureView.center.y + translation.y
-              )
-
-              sender.setTranslation(.zero, in: view)
+        
+        gestureView.center = CGPoint(
+            x: newX,
+            y: gestureView.center.y + translation.y
+        )
+        
+        sender.setTranslation(.zero, in: view)
         
         
     }
