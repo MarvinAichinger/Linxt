@@ -13,6 +13,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     let noOfCellsInRow = 24
     var widthOfCell = 1.0
+    var turn = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         print(indexPath.row)
         print("Row: \(floor(Double(indexPath.row / self.noOfCellsInRow)))")
         print("Column: \(indexPath.row % self.noOfCellsInRow)")
+        
+        let cell = collectionView.cellForItem(at: indexPath)
+
+        if (turn == 0) {
+            cell?.contentView.backgroundColor = UIColor.systemBlue
+            self.turn = 1
+        }else {
+            cell?.contentView.backgroundColor = UIColor.systemRed
+            self.turn = 0
+        }
+        
+        
+        
     }
     
     
@@ -68,7 +82,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //round corners
         cell.contentView.clipsToBounds = true
-        let radius = cell.contentView.frame.size.width / 2
         cell.contentView.layer.cornerRadius = CGFloat(self.widthOfCell / 2.0)
     
         return cell
