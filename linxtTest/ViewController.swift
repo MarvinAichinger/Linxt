@@ -105,6 +105,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 let newCell = collectionView.cellForItem(at: newIndexPath) as! CollectionViewCell
                 
                 print(newCell.isOccupiedFrom)
+                
+                if let view = collectionView as? CollectionView {
+                    if (newCell.isOccupiedFrom == 0 && cell.isOccupiedFrom == 0) {
+                        view.drawLine(from: cell.center, to: newCell.center, player: 0)
+                    }
+                    if (newCell.isOccupiedFrom == 1 && cell.isOccupiedFrom == 1) {
+                        view.drawLine(from: cell.center, to: newCell.center, player: 1)
+                    }
+                }
             }
             
         }
@@ -114,6 +123,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         
     }
+    
+    
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -135,6 +146,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //round corners
         cell.contentView.clipsToBounds = true
         cell.contentView.layer.cornerRadius = CGFloat(self.widthOfCell / 2.0)
+        
     
         return cell
     }
