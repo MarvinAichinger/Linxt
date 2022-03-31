@@ -46,20 +46,60 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
-        print("Row: \(floor(Double(indexPath.row / self.noOfCellsInRow)))")
-        print("Column: \(indexPath.row % self.noOfCellsInRow)")
+        //print("Row: \(floor(Double(indexPath.row / self.noOfCellsInRow)))")
+        //print("Column: \(indexPath.row % self.noOfCellsInRow)")
+        
+        let row = floor(Double(indexPath.row / self.noOfCellsInRow))
+        let column = Double(indexPath.row % self.noOfCellsInRow)
         
         let cell = collectionView.cellForItem(at: indexPath)
 
-        if (turn == 0) {
-            cell?.contentView.backgroundColor = UIColor.systemBlue
-            self.turn = 1
-        }else {
-            cell?.contentView.backgroundColor = UIColor.systemRed
-            self.turn = 0
+        
+            if (turn == 0) {
+                cell?.contentView.backgroundColor = UIColor.systemBlue
+                self.turn = 1
+            }else {
+                cell?.contentView.backgroundColor = UIColor.systemRed
+                self.turn = 0
+            }
+        
+        
+        
+        for i in (0 ... 7) {
+            var nextColumn: Double;
+            var nextRow: Double;
+            switch i {
+            case 0:
+                nextRow = row - 2
+                nextColumn = column + 1
+            case 1:
+                nextRow = row - 1
+                nextColumn = column + 2
+            case 2:
+                nextRow = row + 1
+                nextColumn = column + 2
+            case 3:
+                nextRow = row + 2
+                nextColumn = column + 1
+            case 4:
+                nextRow = row + 2
+                nextColumn = column - 1
+            case 5:
+                nextRow = row + 1
+                nextColumn = column - 2
+            case 6:
+                nextRow = row - 1
+                nextColumn = column - 2
+            case 7:
+                nextRow = row - 2
+                nextColumn = column - 1
+            default:
+                break
+            }
+            
+            
+            
         }
-        
-        
         
     }
     
