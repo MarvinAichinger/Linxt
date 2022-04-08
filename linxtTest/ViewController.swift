@@ -220,6 +220,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             newX = UIScreen.main.bounds.minX+20 + gestureView.frame.width/2
         }
         
+        if(translation.y > 0 && gestureView.frame.maxY >= UIScreen.main.bounds.maxY){
+            newY = UIScreen.main.bounds.maxY - gestureView.frame.height/2
+        }
+        
+        if(translation.y < 0 && gestureView.frame.minY <= UIScreen.main.bounds.minY){
+            newY = UIScreen.main.bounds.minY + gestureView.frame.height/2
+        }
+        
         
         
         print(newX)
@@ -228,7 +236,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         gestureView.center = CGPoint(
             x: newX,
-            y: gestureView.center.y + translation.y
+            y: newY
         )
         
         sender.setTranslation(.zero, in: view)
