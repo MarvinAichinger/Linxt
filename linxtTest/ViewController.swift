@@ -60,13 +60,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     cell.contentView.backgroundColor = UIColor.systemBlue
                     cell.isOccupiedFrom = 0
                     self.turn = 1
+                    
+                    if (column == 0) {
+                        cell.hasConnectionToSide1 = true
+                    }
+                    if (column == Double(self.noOfCellsInRow - 1)) {
+                        cell.hasConnectionToSide2 = true
+                    }
                 }else {
                     cell.contentView.backgroundColor = UIColor.systemRed
                     cell.isOccupiedFrom = 1
                     self.turn = 0
+                    
+                    if (row == 0) {
+                        cell.hasConnectionToSide1 = true
+                    }
+                    if (row == Double(self.noOfCellsInRow - 1)) {
+                        cell.hasConnectionToSide2 = true
+                    }
                 }
             }
             
+            
+            var cellsForNewConnections = [CollectionViewCell]()
             
             for i in (0 ... 7) {
                 var nextColumn: Double = -1;
@@ -100,21 +116,31 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     break
                 }
                 
-                let index = (nextRow * Double(noOfCellsInRow)) + nextColumn
-                let newIndexPath = IndexPath(row: Int(index), section: 0)
-                let newCell = collectionView.cellForItem(at: newIndexPath) as! CollectionViewCell
-                
-                print(newCell.isOccupiedFrom)
-                
-                if let view = collectionView as? CollectionView {
-                    if (newCell.isOccupiedFrom == 0 && cell.isOccupiedFrom == 0) {
-                        view.drawLine(from: cell.center, to: newCell.center, player: 0)
+                if (!(Int(nextRow) > self.noOfCellsInRow - 1 || nextRow < 0 || Int(nextColumn) > self.noOfCellsInRow - 1 || nextColumn < 0)) {
+                    
+                    let index = (nextRow * Double(noOfCellsInRow)) + nextColumn
+                    let newIndexPath = IndexPath(row: Int(index), section: 0)
+                    let newCell = collectionView.cellForItem(at: newIndexPath) as! CollectionViewCell
+                    
+                    print(newCell.isOccupiedFrom)
+                    
+                    if let view = collectionView as? CollectionView {
+                        if (newCell.isOccupiedFrom == 0 && cell.isOccupiedFrom == 0) {
+                            view.drawLine(from: cell.center, to: newCell.center, player: 0)
+                            cellsForNewConnections.append(newCell)
+                        }
+                        if (newCell.isOccupiedFrom == 1 && cell.isOccupiedFrom == 1) {
+                            view.drawLine(from: cell.center, to: newCell.center, player: 1)
+                            cellsForNewConnections.append(newCell)
+                        }
                     }
-                    if (newCell.isOccupiedFrom == 1 && cell.isOccupiedFrom == 1) {
-                        view.drawLine(from: cell.center, to: newCell.center, player: 1)
-                    }
+                    
                 }
+                
+                
             }
+            
+            cell.buildConnectionsTo(cells: cellsForNewConnections)
             
         }
         
