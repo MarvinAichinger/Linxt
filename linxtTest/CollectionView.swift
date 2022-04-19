@@ -44,6 +44,7 @@ class CollectionView: UICollectionView {
         UIColor.red.set()
         path.lineWidth = 4
         path.stroke()
+        
     }
     
     func drawLine(from: CGPoint, to: CGPoint, player: Int) {

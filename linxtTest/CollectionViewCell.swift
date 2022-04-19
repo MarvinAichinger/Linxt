@@ -4,7 +4,7 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
-    var isOccupiedFrom: Int = -1
+    var isOccupiedFrom: Players = Players.neutral
     var hasConnectionToSide1: Bool = false
     var hasConnectionToSide2: Bool = false
     

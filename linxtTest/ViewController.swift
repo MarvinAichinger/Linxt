@@ -13,7 +13,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     let noOfCellsInRow = 24
     var widthOfCell = 1.0
-    var turn = 0;
+    var turn = Players.player1;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,11 +55,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let c = collectionView.cellForItem(at: indexPath)
         
         if let cell = c as? CollectionViewCell {
-            if (cell.isOccupiedFrom == -1) {
-                if (turn == 0) {
+            if (cell.isOccupiedFrom == Players.neutral) {
+                if (turn == Players.player1) {
                     cell.contentView.backgroundColor = UIColor.systemBlue
-                    cell.isOccupiedFrom = 0
-                    self.turn = 1
+                    cell.isOccupiedFrom = Players.player1
+                    self.turn = Players.player2
                     
                     if (column == 0) {
                         cell.hasConnectionToSide1 = true
@@ -69,8 +69,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     }
                 }else {
                     cell.contentView.backgroundColor = UIColor.systemRed
-                    cell.isOccupiedFrom = 1
-                    self.turn = 0
+                    cell.isOccupiedFrom = Players.player2
+                    self.turn = Players.player1
                     
                     if (row == 0) {
                         cell.hasConnectionToSide1 = true
@@ -125,11 +125,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     print(newCell.isOccupiedFrom)
                     
                     if let view = collectionView as? CollectionView {
-                        if (newCell.isOccupiedFrom == 0 && cell.isOccupiedFrom == 0) {
+                        if (newCell.isOccupiedFrom == Players.player1 && cell.isOccupiedFrom == Players.player1) {
                             view.drawLine(from: cell.center, to: newCell.center, player: 0)
                             cellsForNewConnections.append(newCell)
                         }
-                        if (newCell.isOccupiedFrom == 1 && cell.isOccupiedFrom == 1) {
+                        if (newCell.isOccupiedFrom == Players.player2 && cell.isOccupiedFrom == Players.player2) {
                             view.drawLine(from: cell.center, to: newCell.center, player: 1)
                             cellsForNewConnections.append(newCell)
                         }
