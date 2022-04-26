@@ -20,6 +20,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Do any additional setup after loading the view.
         
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
 
     }
     
@@ -29,6 +30,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
 
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        
+        if let subview = collectionView.subviews[0] as? UIDrawView{
+            
+            collectionView.bringSubviewToFront(subview)
+        }
 
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
@@ -227,7 +233,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             return
         }
         
-        
+    
         
         print(gestureView.center.x)
         
