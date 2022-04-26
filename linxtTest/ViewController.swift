@@ -122,16 +122,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     let newIndexPath = IndexPath(row: Int(index), section: 0)
                     let newCell = collectionView.cellForItem(at: newIndexPath) as! CollectionViewCell
                     
-                    print(newCell.isOccupiedFrom)
+                    //print(newCell.isOccupiedFrom)
                     
                     if let view = collectionView as? CollectionView {
                         if (newCell.isOccupiedFrom == Players.player1 && cell.isOccupiedFrom == Players.player1) {
-                            view.drawLine(from: cell.center, to: newCell.center, player: 0)
-                            cellsForNewConnections.append(newCell)
+                            let success = view.drawLine(from: cell.center, to: newCell.center, player: 0)
+                            if (success) {
+                                cellsForNewConnections.append(newCell)
+                            }
                         }
                         if (newCell.isOccupiedFrom == Players.player2 && cell.isOccupiedFrom == Players.player2) {
-                            view.drawLine(from: cell.center, to: newCell.center, player: 1)
-                            cellsForNewConnections.append(newCell)
+                            let success = view.drawLine(from: cell.center, to: newCell.center, player: 1)
+                            if (success) {
+                                cellsForNewConnections.append(newCell)
+                            }
                         }
                     }
                     

@@ -47,13 +47,66 @@ class CollectionView: UICollectionView {
         
     }
     
-    func drawLine(from: CGPoint, to: CGPoint, player: Int) {
-        if (player == 0) {
-            linesPlayer0.append((from, to))
-        }else if (player == 1) {
-            linesPlayer1.append((from, to))
+    func drawLine(from: CGPoint, to: CGPoint, player: Int) -> Bool {
+        
+        let overlap = checkIfLinesOverlap(from: from, to: to);
+        
+        print (overlap)
+        
+        if (!overlap) {
+            if (player == 0) {
+                linesPlayer0.append((from, to))
+            }else if (player == 1) {
+                linesPlayer1.append((from, to))
+            }
+            setNeedsDisplay()
+            return true
+        }else {
+            return false
         }
-        setNeedsDisplay()
+    }
+    
+    func checkIfLinesOverlap(from: CGPoint, to: CGPoint) -> Bool {
+        
+        var allLines: [(CGPoint, CGPoint)] = []
+        allLines.append(contentsOf: linesPlayer0)
+        allLines.append(contentsOf: linesPlayer1)
+        
+        for line in allLines {
+            
+            let ax = from.x
+            let ay = from.y
+            let bx = to.x
+            let by = to.y
+            let cx = line.0.x
+            let cy = line.0.y
+            let dx = line.1.x
+            let dy = line.1.y
+            
+            let d = (ax - bx) * (cy - dy) - (ay - by) * (cx - dx)
+            
+            if (d != 0) {
+            
+                let a = ax*by - ay*bx
+                let b = cx*dy - cy*dx
+                
+                let x = (a * (cx - dx) - b * (ax - bx)) / d
+                let y = (a * (cy - dy) - b * (ay - by)) / d
+                
+                if (x < max(ax, bx) && x > min(ax, bx) && x < max(cx, dx) && x > min(cx, dx)) {
+                    
+                    if (x != from.x && y != from.y && x != to.x && y != to.y) {
+                        return true
+                    }
+                    
+                }
+            
+            }
+            
+        }
+        
+        return false
+        
     }
     
 
