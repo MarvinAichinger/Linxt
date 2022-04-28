@@ -14,12 +14,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let noOfCellsInRow = 24
     var widthOfCell = 1.0
     var turn = Players.player1;
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        
 
     }
     
@@ -290,4 +292,5 @@ extension ViewController: UIGestureRecognizerDelegate {
       return true
     }
 }
+
 
