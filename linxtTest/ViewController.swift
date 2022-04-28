@@ -198,9 +198,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             gestureView.transform.d = 1
         }
         
-        if(gestureView.transform.a > 4 ){
-            gestureView.transform.a = 4
-            gestureView.transform.d = 4
+        if(gestureView.transform.a > 2){
+            gestureView.transform.a = 2
+            gestureView.transform.d = 2
         }
         
         var newX = gestureView.center.x

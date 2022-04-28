@@ -16,7 +16,8 @@ class CollectionView: UICollectionView {
     var linesPlayer1: [(CGPoint, CGPoint)] = [(CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 0))]
     
     override func draw(_ rect: CGRect) {
-
+        
+        
         //Player 0
         var path = UIBezierPath()
         
@@ -62,6 +63,7 @@ class CollectionView: UICollectionView {
             setNeedsDisplay()
             return true
         }else {
+            setNeedsDisplay()
             return false
         }
     }
@@ -95,7 +97,9 @@ class CollectionView: UICollectionView {
                 
                 if (x < max(ax, bx) && x > min(ax, bx) && x < max(cx, dx) && x > min(cx, dx)) {
                     
-                    if (x != from.x && y != from.y && x != to.x && y != to.y) {
+                    if (Int(x) != Int(from.x) && Int(y) != Int(from.y) && Int(x) != Int(to.x) && Int(y) != Int(to.y)) {
+                        //print(x)
+                        //print(y)
                         return true
                     }
                     
