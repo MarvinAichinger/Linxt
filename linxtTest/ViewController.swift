@@ -166,7 +166,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
             }
             
-            var winStatus = cell.buildConnectionsTo(cells: cellsForNewConnections)
+            let winStatus = cell.buildConnectionsTo(cells: cellsForNewConnections)
             
             if (winStatus != Players.neutral) {
                 gameRunning = false;

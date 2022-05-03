@@ -126,15 +126,4 @@ class CollectionView: UICollectionView {
         return false
         
     }
-    
-    func drawLine(from: CGPoint, to: CGPoint, player: Int) -> Bool{
-        if (player == 0) {
-            linesPlayer0.append((from, to))
-        }else if (player == 1) {
-            linesPlayer1.append((from, to))
-        }
-        setNeedsDisplay()
-        
-        return true
-    }
 }
