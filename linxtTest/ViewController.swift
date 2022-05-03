@@ -15,6 +15,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var widthOfCell = 1.0
     var turn = Players.player1;
     
+    var gameRunning = true;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -45,6 +47,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if (!gameRunning) {
+            return;
+        }
+        
         print(indexPath.row)
         //print("Row: \(floor(Double(indexPath.row / self.noOfCellsInRow)))")
         //print("Column: \(indexPath.row % self.noOfCellsInRow)")
@@ -57,6 +64,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let cell = c as? CollectionViewCell {
             if (cell.isOccupiedFrom == Players.neutral) {
                 if (turn == Players.player1) {
+                    
+                    if (row == 0 || row == Double(noOfCellsInRow - 1)) {
+                        return;
+                    }
+                    
                     cell.contentView.backgroundColor = UIColor.systemBlue
                     cell.isOccupiedFrom = Players.player1
                     self.turn = Players.player2
@@ -68,6 +80,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         cell.hasConnectionToSide2 = true
                     }
                 }else {
+                    
+                    if (column == 0 || column == Double(noOfCellsInRow - 1)) {
+                        return;
+                    }
+                    
                     cell.contentView.backgroundColor = UIColor.systemRed
                     cell.isOccupiedFrom = Players.player2
                     self.turn = Players.player1
@@ -144,7 +161,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
             }
             
-            cell.buildConnectionsTo(cells: cellsForNewConnections)
+            var winStatus = cell.buildConnectionsTo(cells: cellsForNewConnections)
+            
+            if (winStatus != Players.neutral) {
+                gameRunning = false;
+            }
             
         }
         

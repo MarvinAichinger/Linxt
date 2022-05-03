@@ -17,7 +17,6 @@ class CollectionView: UICollectionView {
     
     override func draw(_ rect: CGRect) {
         
-        
         //Player 0
         var path = UIBezierPath()
         

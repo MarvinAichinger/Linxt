@@ -11,7 +11,7 @@ class CollectionViewCell: UICollectionViewCell {
     var connectedTo = [CollectionViewCell]()
     
     
-    func buildConnectionsTo(cells: [CollectionViewCell]) {
+    func buildConnectionsTo(cells: [CollectionViewCell]) -> Players {
         
         self.connectedTo.append(contentsOf: cells)
         var cells = cells
@@ -31,7 +31,7 @@ class CollectionViewCell: UICollectionViewCell {
         
         if (self.hasConnectionToSide1 && self.hasConnectionToSide2) {
             print("player \(isOccupiedFrom) wins")
-            return;
+            return isOccupiedFrom;
         }
         
         for cell in cells {
@@ -47,6 +47,7 @@ class CollectionViewCell: UICollectionViewCell {
             }
         }
         
+        return Players.neutral
         
     }
     
