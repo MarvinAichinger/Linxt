@@ -10,6 +10,30 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="aNm-VV-Dnf">
+            <objects>
+                <viewController id="tx1-dd-aUf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GoJ-7U-PRb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LC-t6-e2Q">
+                                <rect key="frame" x="184" y="433" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="GSr-Ws-Igf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxw-Wb-vmo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-370" y="113"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="linxtTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +41,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" bounces="NO" scrollEnabled="NO" maximumZoomScale="100" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XeC-b2-pgx" customClass="CollectionView" customModule="linxtTest" customModuleProvider="target">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" maximumZoomScale="100" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XeC-b2-pgx" customClass="CollectionView" customModule="linxtTest" customModuleProvider="target">
                                 <rect key="frame" x="20" y="208.5" width="374" height="374"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -72,7 +96,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="115.84821428571428"/>
+            <point key="canvasLocation" x="610" y="113"/>
         </scene>
     </scenes>
     <resources>
