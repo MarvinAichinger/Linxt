@@ -17,6 +17,7 @@
 		C84CBE6927DB2CAA003905CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C84CBE6827DB2CAA003905CE /* Assets.xcassets */; };
 		C84CBE6C27DB2CAA003905CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C84CBE6A27DB2CAA003905CE /* LaunchScreen.storyboard */; };
 		C84CBE7627DB3113003905CE /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE7527DB3113003905CE /* CollectionViewController.swift */; };
+		CE551BB2281812C200654E18 /* UIDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE551BB1281812C200654E18 /* UIDrawView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C84CBE6B27DB2CAA003905CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C84CBE6D27DB2CAA003905CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C84CBE7527DB3113003905CE /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		CE551BB1281812C200654E18 /* UIDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDrawView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		C84CBE5E27DB2CA9003905CE /* linxtTest */ = {
 			isa = PBXGroup;
 			children = (
+				CE551BB1281812C200654E18 /* UIDrawView.swift */,
 				C84CBE5F27DB2CA9003905CE /* AppDelegate.swift */,
 				C84CBE6127DB2CA9003905CE /* SceneDelegate.swift */,
 				C84CBE6327DB2CA9003905CE /* ViewController.swift */,
@@ -155,6 +158,7 @@
 			files = (
 				7B7BF8E427F623030014449A /* CollectionView.swift in Sources */,
 				7B76EFB527F5B6A800F82B3F /* CollectionViewCell.swift in Sources */,
+				CE551BB2281812C200654E18 /* UIDrawView.swift in Sources */,
 				7B5BDD8D280ECF3E005BFBCF /* Enums.swift in Sources */,
 				C84CBE7627DB3113003905CE /* CollectionViewController.swift in Sources */,
 				C84CBE6427DB2CA9003905CE /* ViewController.swift in Sources */,

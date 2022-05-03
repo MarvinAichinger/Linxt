@@ -31,6 +31,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
 
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        
+        if let subview = collectionView.subviews[0] as? UIDrawView{
+            
+            collectionView.bringSubviewToFront(subview)
+        }
 
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
@@ -161,7 +166,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
             }
             
-            var winStatus = cell.buildConnectionsTo(cells: cellsForNewConnections)
+            let winStatus = cell.buildConnectionsTo(cells: cellsForNewConnections)
             
             if (winStatus != Players.neutral) {
                 gameRunning = false;
@@ -252,7 +257,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             return
         }
         
-        
+    
         
         print(gestureView.center.x)
         
@@ -306,4 +311,5 @@ extension ViewController: UIGestureRecognizerDelegate {
       return true
     }
 }
+
 
