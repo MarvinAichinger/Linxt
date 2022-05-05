@@ -13,29 +13,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     let noOfCellsInRow = 24
     var widthOfCell = 1.0
-    var turn = Players.player1;
     
-    var gameRunning = true;
-    
-    var gameColors: GameColors = GameColors()
+    let gameManager: GameManager = GameManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        //let size = collectionView.bounds.width / 24
-
-
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        
         if let subview = collectionView.subviews[0] as? UIDrawView{
-            
             collectionView.bringSubviewToFront(subview)
         }
 
@@ -46,166 +34,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(self.noOfCellsInRow))
         
         self.widthOfCell = Double(size)
-        
         return CGSize(width: size, height: size)
-        
-
     }
-
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if (!gameRunning) {
-            return;
-        }
-        
-        print(indexPath.row)
-        //print("Row: \(floor(Double(indexPath.row / self.noOfCellsInRow)))")
-        //print("Column: \(indexPath.row % self.noOfCellsInRow)")
-        
-        let row = floor(Double(indexPath.row / self.noOfCellsInRow))
-        let column = Double(indexPath.row % self.noOfCellsInRow)
-        
-        let c = collectionView.cellForItem(at: indexPath)
-        
-        if let cell = c as? CollectionViewCell {
-            if (cell.isOccupiedFrom == Players.neutral) {
-                if (turn == Players.player1) {
-                    
-                    if (row == 0 || row == Double(noOfCellsInRow - 1)) {
-                        return;
-                    }
-                    
-                    cell.contentView.backgroundColor = gameColors.blue
-                    cell.isOccupiedFrom = Players.player1
-                    self.turn = Players.player2
-                    
-                    if (column == 0) {
-                        cell.hasConnectionToSide1 = true
-                    }
-                    if (column == Double(self.noOfCellsInRow - 1)) {
-                        cell.hasConnectionToSide2 = true
-                    }
-                }else {
-                    
-                    if (column == 0 || column == Double(noOfCellsInRow - 1)) {
-                        return;
-                    }
-                    
-                    cell.contentView.backgroundColor = gameColors.red
-                    cell.isOccupiedFrom = Players.player2
-                    self.turn = Players.player1
-                    
-                    if (row == 0) {
-                        cell.hasConnectionToSide1 = true
-                    }
-                    if (row == Double(self.noOfCellsInRow - 1)) {
-                        cell.hasConnectionToSide2 = true
-                    }
-                }
-            }
-            
-            
-            var cellsForNewConnections = [CollectionViewCell]()
-            
-            for i in (0 ... 7) {
-                var nextColumn: Double = -1;
-                var nextRow: Double = -1;
-                switch i {
-                case 0:
-                    nextRow = row - 2
-                    nextColumn = column + 1
-                case 1:
-                    nextRow = row - 1
-                    nextColumn = column + 2
-                case 2:
-                    nextRow = row + 1
-                    nextColumn = column + 2
-                case 3:
-                    nextRow = row + 2
-                    nextColumn = column + 1
-                case 4:
-                    nextRow = row + 2
-                    nextColumn = column - 1
-                case 5:
-                    nextRow = row + 1
-                    nextColumn = column - 2
-                case 6:
-                    nextRow = row - 1
-                    nextColumn = column - 2
-                case 7:
-                    nextRow = row - 2
-                    nextColumn = column - 1
-                default:
-                    break
-                }
-                
-                if (!(Int(nextRow) > self.noOfCellsInRow - 1 || nextRow < 0 || Int(nextColumn) > self.noOfCellsInRow - 1 || nextColumn < 0)) {
-                    
-                    let index = (nextRow * Double(noOfCellsInRow)) + nextColumn
-                    let newIndexPath = IndexPath(row: Int(index), section: 0)
-                    let newCell = collectionView.cellForItem(at: newIndexPath) as! CollectionViewCell
-                    
-                    //print(newCell.isOccupiedFrom)
-                    
-                    if let view = collectionView as? CollectionView {
-                        if (newCell.isOccupiedFrom == Players.player1 && cell.isOccupiedFrom == Players.player1) {
-                            let success = view.drawLine(from: cell.center, to: newCell.center, player: 0)
-                            if (success) {
-                                cellsForNewConnections.append(newCell)
-                            }
-                        }
-                        if (newCell.isOccupiedFrom == Players.player2 && cell.isOccupiedFrom == Players.player2) {
-                            let success = view.drawLine(from: cell.center, to: newCell.center, player: 1)
-                            if (success) {
-                                cellsForNewConnections.append(newCell)
-                            }
-                        }
-                    }
-                    
-                }
-                
-                
-            }
-            
-            let winStatus = cell.buildConnectionsTo(cells: cellsForNewConnections)
-            
-            if (winStatus != Players.neutral) {
-                gameRunning = false;
-            }
-            
-        }
-        
-        
-        
-        
+        gameManager.handleClick(collectionView: collectionView, indexPath: indexPath, noOfCellsInRow: self.noOfCellsInRow)
         
     }
     
-    
-    
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return self.noOfCellsInRow * self.noOfCellsInRow
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-    
-        // Configure the cell
         
-        //round corners
         cell.contentView.clipsToBounds = true
         cell.contentView.layer.cornerRadius = CGFloat(self.widthOfCell / 2.0)
         
-    
         return cell
     }
     
@@ -214,7 +65,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         guard let gestureView = sender.view else {
           return
         }
-        
         
         gestureView.transform = gestureView.transform.scaledBy(
           x: sender.scale,
@@ -259,16 +109,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             return
         }
         
-    
-        
-        print(gestureView.center.x)
+        //print(gestureView.center.x)
         
         var newX = gestureView.center.x + translation.x
         var newY = gestureView.center.y + translation.y
         
-        print(newX)
-        print(translation.x)
-        
+        //print(newX)
+        //print(translation.x)
         
         if(translation.x < 0 && gestureView.frame.maxX <= UIScreen.main.bounds.maxX){
             newX = UIScreen.main.bounds.maxX-20 - gestureView.frame.width/2
@@ -286,9 +133,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             newY = UIScreen.main.bounds.minY + gestureView.frame.height/2
         }
         
-        
-        
-        print(newX)
+        //print(newX)
         
         //newX = gestureView.frame.maxX > self.accessibilityFrame.size.width ? newX : gestureView.center.x
         

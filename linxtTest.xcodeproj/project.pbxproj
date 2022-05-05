@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B5BDD8D280ECF3E005BFBCF /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BDD8C280ECF3E005BFBCF /* Enums.swift */; };
 		7B76EFB527F5B6A800F82B3F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */; };
+		7B794FD92823DAB1002B61D5 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B794FD82823DAB1002B61D5 /* GameManager.swift */; };
 		7B7BF8E427F623030014449A /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7BF8E327F623030014449A /* CollectionView.swift */; };
 		C84CBE6027DB2CA9003905CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE5F27DB2CA9003905CE /* AppDelegate.swift */; };
 		C84CBE6227DB2CA9003905CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE6127DB2CA9003905CE /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		7B5BDD8C280ECF3E005BFBCF /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		7B794FD82823DAB1002B61D5 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		7B7BF8E327F623030014449A /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		C84CBE5C27DB2CA9003905CE /* linxtTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = linxtTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C84CBE5F27DB2CA9003905CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				C84CBE6127DB2CA9003905CE /* SceneDelegate.swift */,
 				C84CBE6327DB2CA9003905CE /* ViewController.swift */,
 				7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */,
+				7B794FD82823DAB1002B61D5 /* GameManager.swift */,
 				7B5BDD8C280ECF3E005BFBCF /* Enums.swift */,
 				C84CBE6527DB2CA9003905CE /* Main.storyboard */,
 				7B7BF8E327F623030014449A /* CollectionView.swift */,
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B7BF8E427F623030014449A /* CollectionView.swift in Sources */,
+				7B794FD92823DAB1002B61D5 /* GameManager.swift in Sources */,
 				7B76EFB527F5B6A800F82B3F /* CollectionViewCell.swift in Sources */,
 				CE551BB2281812C200654E18 /* UIDrawView.swift in Sources */,
 				7B5BDD8D280ECF3E005BFBCF /* Enums.swift in Sources */,

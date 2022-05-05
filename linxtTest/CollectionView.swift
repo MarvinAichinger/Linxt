@@ -19,7 +19,6 @@ class CollectionView: UICollectionView {
     override func draw(_ rect: CGRect) {
         // Drawing code
         
-        
         //Player 0
         var path = UIBezierPath()
         
@@ -34,7 +33,7 @@ class CollectionView: UICollectionView {
         path.close()
 
         layer.path = path.cgPath
-        layer.lineWidth = 4
+        layer.lineWidth = 10
         layer.strokeColor = gameColors.blueCG
 
         self.layer.addSublayer(layer)
@@ -51,7 +50,7 @@ class CollectionView: UICollectionView {
         layer = CAShapeLayer()
 
         layer.path = path.cgPath
-        layer.lineWidth = 4
+        layer.lineWidth = 10
         layer.strokeColor = gameColors.redCG
 
         self.layer.addSublayer(layer)
@@ -68,7 +67,7 @@ class CollectionView: UICollectionView {
         
         let overlap = checkIfLinesOverlap(from: from, to: to);
         
-        print (overlap)
+        //print (overlap)
         
         if (!overlap) {
             if (player == 0) {
