@@ -12,6 +12,8 @@ class CollectionView: UICollectionView {
     var linesPlayer0: [(CGPoint, CGPoint)] = [(CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 0))]
     var linesPlayer1: [(CGPoint, CGPoint)] = [(CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 0))]
     
+    var gameColors: GameColors = GameColors()
+    
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
@@ -33,7 +35,7 @@ class CollectionView: UICollectionView {
 
         layer.path = path.cgPath
         layer.lineWidth = 4
-        layer.strokeColor = UIColor.blue.cgColor
+        layer.strokeColor = gameColors.blueCG
 
         self.layer.addSublayer(layer)
         
@@ -50,7 +52,7 @@ class CollectionView: UICollectionView {
 
         layer.path = path.cgPath
         layer.lineWidth = 4
-        layer.strokeColor = UIColor.red.cgColor
+        layer.strokeColor = gameColors.redCG
 
         self.layer.addSublayer(layer)
         

@@ -17,6 +17,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var gameRunning = true;
     
+    var gameColors: GameColors = GameColors()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -74,7 +76,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         return;
                     }
                     
-                    cell.contentView.backgroundColor = UIColor.systemBlue
+                    cell.contentView.backgroundColor = gameColors.blue
                     cell.isOccupiedFrom = Players.player1
                     self.turn = Players.player2
                     
@@ -90,7 +92,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         return;
                     }
                     
-                    cell.contentView.backgroundColor = UIColor.systemRed
+                    cell.contentView.backgroundColor = gameColors.red
                     cell.isOccupiedFrom = Players.player2
                     self.turn = Players.player1
                     
