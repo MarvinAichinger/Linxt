@@ -8,13 +8,13 @@
 import UIKit
 
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CoopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     
     let noOfCellsInRow = 24
     var widthOfCell = 1.0
     
-    let gameManager: GameManager = GameManager()
+    let gameManager: CoopGameManager = CoopGameManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +23,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        if let subview = collectionView.subviews[0] as? UIDrawView{
-            collectionView.bringSubviewToFront(subview)
-        }
-
+        
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
             + (flowLayout.minimumInteritemSpacing * CGFloat(self.noOfCellsInRow - 1))
@@ -34,6 +31,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(self.noOfCellsInRow))
         
         self.widthOfCell = Double(size)
+        
+        if let view = collectionView as? CollectionView {
+            view.setSize(newSize: self.widthOfCell)
+        }
+        
         return CGSize(width: size, height: size)
     }
     
@@ -150,7 +152,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
 }
 
-extension ViewController: UIGestureRecognizerDelegate {
+extension CoopViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(
       _ gestureRecognizer: UIGestureRecognizer,
       shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer

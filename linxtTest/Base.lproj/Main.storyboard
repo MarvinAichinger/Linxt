@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ghz-AK-hu7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Coop View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="linxtTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CoopViewController" customModule="linxtTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,7 +72,72 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="610" y="113"/>
+            <point key="canvasLocation" x="301" y="112"/>
+        </scene>
+        <!--Multiplayer View Controller-->
+        <scene sceneID="pNZ-LQ-1XO">
+            <objects>
+                <viewController id="ghz-AK-hu7" customClass="MultiplayerViewController" customModule="linxtTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NfP-tp-2Bj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" maximumZoomScale="100" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jhq-Zj-SWk" customClass="CollectionView" customModule="linxtTest" customModuleProvider="target">
+                                <rect key="frame" x="20" y="208.5" width="374" height="374"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Jhq-Zj-SWk" secondAttribute="height" multiplier="1:1" id="66Z-Jf-wYu"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="Xql-Cr-tOp">
+                                    <size key="itemSize" width="2" height="2"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="hSv-Fs-tcv" customClass="CollectionViewCell" customModule="linxtTest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="2" height="2"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cL2-LI-vSp">
+                                            <rect key="frame" x="0.0" y="0.0" width="2" height="2"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="ghz-AK-hu7" id="hbY-40-mey"/>
+                                    <outlet property="delegate" destination="ghz-AK-hu7" id="hv8-LK-ng8"/>
+                                    <outletCollection property="gestureRecognizers" destination="jKl-SG-D7f" appends="YES" id="YzB-kL-2um"/>
+                                    <outletCollection property="gestureRecognizers" destination="ke4-uG-AbD" appends="YES" id="hoO-la-bfS"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qej-IJ-n4S"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Jhq-Zj-SWk" firstAttribute="top" secondItem="Qej-IJ-n4S" secondAttribute="top" constant="164.5" id="LNl-7K-jzK"/>
+                            <constraint firstItem="Qej-IJ-n4S" firstAttribute="trailing" secondItem="Jhq-Zj-SWk" secondAttribute="trailing" constant="20" id="PvF-Yf-ypW"/>
+                            <constraint firstItem="Jhq-Zj-SWk" firstAttribute="leading" secondItem="Qej-IJ-n4S" secondAttribute="leading" constant="20" id="i49-GB-AOs"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iUZ-pW-Lgl" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="jKl-SG-D7f">
+                    <connections>
+                        <action selector="handlePinch:" destination="ghz-AK-hu7" id="H2n-Vw-1kn"/>
+                        <outlet property="delegate" destination="ghz-AK-hu7" id="cLx-b2-rls"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="ke4-uG-AbD">
+                    <connections>
+                        <action selector="handlePan:" destination="ghz-AK-hu7" id="Wg1-1M-j1F"/>
+                        <outlet property="delegate" destination="ghz-AK-hu7" id="2uy-gR-Agd"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1304" y="112"/>
         </scene>
     </scenes>
     <resources>

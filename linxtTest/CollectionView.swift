@@ -14,6 +14,8 @@ class CollectionView: UICollectionView {
     
     var gameColors: GameColors = GameColors()
     
+    var size: Double = 1.0
+    
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
@@ -33,7 +35,7 @@ class CollectionView: UICollectionView {
         path.close()
 
         layer.path = path.cgPath
-        layer.lineWidth = 10
+        layer.lineWidth = CGFloat(self.size / 3.0)
         layer.strokeColor = gameColors.blueCG
 
         self.layer.addSublayer(layer)
@@ -50,7 +52,7 @@ class CollectionView: UICollectionView {
         layer = CAShapeLayer()
 
         layer.path = path.cgPath
-        layer.lineWidth = 10
+        layer.lineWidth = CGFloat(self.size / 3.0)
         layer.strokeColor = gameColors.redCG
 
         self.layer.addSublayer(layer)
@@ -127,4 +129,9 @@ class CollectionView: UICollectionView {
         return false
         
     }
+    
+    func setSize(newSize: Double) {
+        self.size = newSize
+    }
+    
 }

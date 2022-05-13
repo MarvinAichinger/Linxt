@@ -3,39 +3,40 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7B5BDD8D280ECF3E005BFBCF /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BDD8C280ECF3E005BFBCF /* Enums.swift */; };
 		7B76EFB527F5B6A800F82B3F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */; };
-		7B794FD92823DAB1002B61D5 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B794FD82823DAB1002B61D5 /* GameManager.swift */; };
+		7B794FD92823DAB1002B61D5 /* CoopGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B794FD82823DAB1002B61D5 /* CoopGameManager.swift */; };
 		7B7BF8E427F623030014449A /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7BF8E327F623030014449A /* CollectionView.swift */; };
 		C84CBE6027DB2CA9003905CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE5F27DB2CA9003905CE /* AppDelegate.swift */; };
 		C84CBE6227DB2CA9003905CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE6127DB2CA9003905CE /* SceneDelegate.swift */; };
-		C84CBE6427DB2CA9003905CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE6327DB2CA9003905CE /* ViewController.swift */; };
+		C84CBE6427DB2CA9003905CE /* CoopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE6327DB2CA9003905CE /* CoopViewController.swift */; };
 		C84CBE6727DB2CA9003905CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C84CBE6527DB2CA9003905CE /* Main.storyboard */; };
 		C84CBE6927DB2CAA003905CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C84CBE6827DB2CAA003905CE /* Assets.xcassets */; };
 		C84CBE6C27DB2CAA003905CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C84CBE6A27DB2CAA003905CE /* LaunchScreen.storyboard */; };
-		C84CBE7627DB3113003905CE /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE7527DB3113003905CE /* CollectionViewController.swift */; };
-		CE551BB2281812C200654E18 /* UIDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE551BB1281812C200654E18 /* UIDrawView.swift */; };
+		C8C963B6282E365F0007006F /* MultiplayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C963B5282E365F0007006F /* MultiplayerViewController.swift */; };
+		C8C963B8282E36C00007006F /* MultiplayerGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C963B7282E36C00007006F /* MultiplayerGameManager.swift */; };
+		C8C963BB282E394D0007006F /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = C8C963BA282E394D0007006F /* SocketIO */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7B5BDD8C280ECF3E005BFBCF /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		7B794FD82823DAB1002B61D5 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		7B794FD82823DAB1002B61D5 /* CoopGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopGameManager.swift; sourceTree = "<group>"; };
 		7B7BF8E327F623030014449A /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		C84CBE5C27DB2CA9003905CE /* linxtTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = linxtTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C84CBE5F27DB2CA9003905CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C84CBE6127DB2CA9003905CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C84CBE6327DB2CA9003905CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C84CBE6327DB2CA9003905CE /* CoopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopViewController.swift; sourceTree = "<group>"; };
 		C84CBE6627DB2CA9003905CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C84CBE6827DB2CAA003905CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C84CBE6B27DB2CAA003905CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C84CBE6D27DB2CAA003905CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C84CBE7527DB3113003905CE /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		CE551BB1281812C200654E18 /* UIDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDrawView.swift; sourceTree = "<group>"; };
+		C8C963B5282E365F0007006F /* MultiplayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerViewController.swift; sourceTree = "<group>"; };
+		C8C963B7282E36C00007006F /* MultiplayerGameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerGameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8C963BB282E394D0007006F /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,21 +70,37 @@
 		C84CBE5E27DB2CA9003905CE /* linxtTest */ = {
 			isa = PBXGroup;
 			children = (
-				CE551BB1281812C200654E18 /* UIDrawView.swift */,
+				C8C963B4282E35F10007006F /* Multiplayer */,
+				C8C963B3282E34A20007006F /* Coop */,
 				C84CBE5F27DB2CA9003905CE /* AppDelegate.swift */,
 				C84CBE6127DB2CA9003905CE /* SceneDelegate.swift */,
-				C84CBE6327DB2CA9003905CE /* ViewController.swift */,
 				7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */,
-				7B794FD82823DAB1002B61D5 /* GameManager.swift */,
 				7B5BDD8C280ECF3E005BFBCF /* Enums.swift */,
 				C84CBE6527DB2CA9003905CE /* Main.storyboard */,
 				7B7BF8E327F623030014449A /* CollectionView.swift */,
-				C84CBE7527DB3113003905CE /* CollectionViewController.swift */,
 				C84CBE6827DB2CAA003905CE /* Assets.xcassets */,
 				C84CBE6A27DB2CAA003905CE /* LaunchScreen.storyboard */,
 				C84CBE6D27DB2CAA003905CE /* Info.plist */,
 			);
 			path = linxtTest;
+			sourceTree = "<group>";
+		};
+		C8C963B3282E34A20007006F /* Coop */ = {
+			isa = PBXGroup;
+			children = (
+				C84CBE6327DB2CA9003905CE /* CoopViewController.swift */,
+				7B794FD82823DAB1002B61D5 /* CoopGameManager.swift */,
+			);
+			path = Coop;
+			sourceTree = "<group>";
+		};
+		C8C963B4282E35F10007006F /* Multiplayer */ = {
+			isa = PBXGroup;
+			children = (
+				C8C963B7282E36C00007006F /* MultiplayerGameManager.swift */,
+				C8C963B5282E365F0007006F /* MultiplayerViewController.swift */,
+			);
+			path = Multiplayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,6 +119,9 @@
 			dependencies = (
 			);
 			name = linxtTest;
+			packageProductDependencies = (
+				C8C963BA282E394D0007006F /* SocketIO */,
+			);
 			productName = linxtTest;
 			productReference = C84CBE5C27DB2CA9003905CE /* linxtTest.app */;
 			productType = "com.apple.product-type.application";
@@ -132,6 +153,9 @@
 				Base,
 			);
 			mainGroup = C84CBE5327DB2CA9003905CE;
+			packageReferences = (
+				C8C963B9282E394D0007006F /* XCRemoteSwiftPackageReference "socket" */,
+			);
 			productRefGroup = C84CBE5D27DB2CA9003905CE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -160,12 +184,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B7BF8E427F623030014449A /* CollectionView.swift in Sources */,
-				7B794FD92823DAB1002B61D5 /* GameManager.swift in Sources */,
+				C8C963B6282E365F0007006F /* MultiplayerViewController.swift in Sources */,
+				C8C963B8282E36C00007006F /* MultiplayerGameManager.swift in Sources */,
+				7B794FD92823DAB1002B61D5 /* CoopGameManager.swift in Sources */,
 				7B76EFB527F5B6A800F82B3F /* CollectionViewCell.swift in Sources */,
-				CE551BB2281812C200654E18 /* UIDrawView.swift in Sources */,
 				7B5BDD8D280ECF3E005BFBCF /* Enums.swift in Sources */,
-				C84CBE7627DB3113003905CE /* CollectionViewController.swift in Sources */,
-				C84CBE6427DB2CA9003905CE /* ViewController.swift in Sources */,
+				C84CBE6427DB2CA9003905CE /* CoopViewController.swift in Sources */,
 				C84CBE6027DB2CA9003905CE /* AppDelegate.swift in Sources */,
 				C84CBE6227DB2CA9003905CE /* SceneDelegate.swift in Sources */,
 			);
@@ -367,6 +391,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C8C963B9282E394D0007006F /* XCRemoteSwiftPackageReference "socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 16.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C8C963BA282E394D0007006F /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8C963B9282E394D0007006F /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C84CBE5427DB2CA9003905CE /* Project object */;
 }

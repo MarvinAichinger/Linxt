@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class GameManager {
+class CoopGameManager {
     
     var turn = Players.player1;
     var gameRunning = true;
