@@ -43,7 +43,7 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        gameManager.handleClick(collectionView: collectionView, indexPath: indexPath, noOfCellsInRow: self.noOfCellsInRow, ui: true)
+        gameManager.handleClick(index: indexPath.row, ui: true)
         
     }
     

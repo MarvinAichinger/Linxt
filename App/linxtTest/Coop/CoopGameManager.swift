@@ -20,7 +20,7 @@ class CoopGameManager {
             return;
         }
         
-        //print(indexPath.row)
+        //print(indexPath.section)
         //print("Row: \(floor(Double(indexPath.row / self.noOfCellsInRow)))")
         //print("Column: \(indexPath.row % self.noOfCellsInRow)")
         
