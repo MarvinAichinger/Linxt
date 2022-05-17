@@ -87,12 +87,16 @@ io.on("connection", (socket: Socket) => {
   }
 
   socket.on("pointSet", (roomId: string, point: number) => {
+    console.log(roomId);
     let gameRoom = gameRooms.get(roomId);
     if (gameRoom) {
+      console.log("room exists");
       if (gameRoom.player1 === socket.id) {
-        io.sockets.sockets.get(gameRoom.player1)?.emit("pointSet", point);
-      } else {
+        console.log("player 1");
         io.sockets.sockets.get(gameRoom.player2)?.emit("pointSet", point);
+      } else {
+        console.log("player 2");
+        io.sockets.sockets.get(gameRoom.player1)?.emit("pointSet", point);
       }
     }
   });
