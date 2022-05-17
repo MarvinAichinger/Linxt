@@ -44,6 +44,7 @@ class MultiplayerGameManager {
         }
         
         socket.on("pointSet") {data, ack in
+            debugPrint(data[0])
             self.handleClick(index: data[0] as! Int, ui: false)
         }
         
@@ -61,7 +62,7 @@ class MultiplayerGameManager {
         }
         
         if (ui) {
-            self.socket.emit("pointSet", index)
+            self.socket.emit("pointSet", roomID, index)
         }
         
         let indexPath = IndexPath(row: index, section: 0)
