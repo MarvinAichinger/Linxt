@@ -17,6 +17,7 @@ class MultiplayerGameManager {
     
     let manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt"])])
     let socket: SocketIOClient
+    var roomID = "";
     
     var collectionView: UICollectionView!
     var noOfCellsInRow: Int!
@@ -30,6 +31,7 @@ class MultiplayerGameManager {
         
         socket.on("gameRoomID") {data, ack in
             print(data[0])
+            self.roomID = data[0] as! String
         }
         
         socket.on("startGame") {data, ack in
@@ -42,13 +44,14 @@ class MultiplayerGameManager {
         }
         
         socket.on("pointSet") {data, ack in
-            //handleClick(indexPath: data[0] as! Int, ui: false)
+            debugPrint(data[0])
+            self.handleClick(index: data[0] as! Int, ui: false)
         }
         
         socket.connect()
     }
     
-    func handleClick(indexPath: IndexPath, ui: Bool) {
+    func handleClick(index: Int, ui: Bool) {
         
         if (ui && self.turn == Players.player2) {
             return
@@ -58,12 +61,20 @@ class MultiplayerGameManager {
             return
         }
         
+        if (ui) {
+            self.socket.emit("pointSet", roomID, index)
+        }
+        
+        let indexPath = IndexPath(row: index, section: 0)
+
+        
         //print(indexPath.row)
         //print("Row: \(floor(Double(indexPath.row / self.noOfCellsInRow)))")
         //print("Column: \(indexPath.row % self.noOfCellsInRow)")
         
         let row = floor(Double(indexPath.row / noOfCellsInRow))
         let column = Double(indexPath.row % noOfCellsInRow)
+        
         
         let c = collectionView.cellForItem(at: indexPath)
         //collectionView.cellForItem(at: IndexPath(row: , section: 0))
