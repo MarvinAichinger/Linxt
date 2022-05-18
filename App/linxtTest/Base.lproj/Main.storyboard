@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dsM-Vw-DiJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dsM-Vw-DiJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -84,6 +85,9 @@
                                 <rect key="frame" x="163" y="270" width="89" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="search game"/>
+                                <connections>
+                                    <segue destination="ghz-AK-hu7" kind="modal" modalPresentationStyle="fullScreen" id="KVG-Dh-3tp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Zk9-JH-KeW"/>
@@ -208,6 +212,7 @@
                             <constraint firstItem="Jhq-Zj-SWk" firstAttribute="leading" secondItem="Qej-IJ-n4S" secondAttribute="leading" constant="20" id="i49-GB-AOs"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="mFa-VJ-sFJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iUZ-pW-Lgl" sceneMemberID="firstResponder"/>
                 <pinchGestureRecognizer id="jKl-SG-D7f">

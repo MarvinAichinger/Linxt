@@ -12,6 +12,7 @@ import SocketIO
 class MultiplayerGameManager {
     
     var turn = Players.player1;
+    var player = Players.player1;
     var gameRunning = true;
     var gameColors: GameColors = GameColors()
     
@@ -38,7 +39,8 @@ class MultiplayerGameManager {
             print(data[0])
             if let starting = data[0] as? Bool {
                 if (!starting) {
-                    self.turn = Players.player2
+                    //self.turn = Players.player2
+                    self.player = Players.player2
                 }
             }
         }
@@ -53,7 +55,7 @@ class MultiplayerGameManager {
     
     func handleClick(index: Int, ui: Bool) {
         
-        if (ui && self.turn == Players.player2) {
+        if (ui && self.turn != player) {
             return
         }
         
