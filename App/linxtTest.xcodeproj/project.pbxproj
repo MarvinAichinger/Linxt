@@ -11,6 +11,7 @@
 		7B76EFB527F5B6A800F82B3F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */; };
 		7B794FD92823DAB1002B61D5 /* CoopGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B794FD82823DAB1002B61D5 /* CoopGameManager.swift */; };
 		7B7BF8E427F623030014449A /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7BF8E327F623030014449A /* CollectionView.swift */; };
+		C826927728364D1700CC1979 /* LinxtLogo.svg in Resources */ = {isa = PBXBuildFile; fileRef = C826927628364D1700CC1979 /* LinxtLogo.svg */; };
 		C8355C842833C762004791F0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8355C832833C762004791F0 /* MenuViewController.swift */; };
 		C8355C862833C9B5004791F0 /* MultiplayerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8355C852833C9B5004791F0 /* MultiplayerMenuViewController.swift */; };
 		C84CBE6027DB2CA9003905CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE5F27DB2CA9003905CE /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 		7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		7B794FD82823DAB1002B61D5 /* CoopGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopGameManager.swift; sourceTree = "<group>"; };
 		7B7BF8E327F623030014449A /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		C826927628364D1700CC1979 /* LinxtLogo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LinxtLogo.svg; sourceTree = "<group>"; };
 		C8355C832833C762004791F0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C8355C852833C9B5004791F0 /* MultiplayerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerMenuViewController.swift; sourceTree = "<group>"; };
 		C84CBE5C27DB2CA9003905CE /* linxtTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = linxtTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +95,7 @@
 				C84CBE6527DB2CA9003905CE /* Main.storyboard */,
 				7B7BF8E327F623030014449A /* CollectionView.swift */,
 				C84CBE6827DB2CAA003905CE /* Assets.xcassets */,
+				C826927628364D1700CC1979 /* LinxtLogo.svg */,
 				C84CBE6A27DB2CAA003905CE /* LaunchScreen.storyboard */,
 				C84CBE6D27DB2CAA003905CE /* Info.plist */,
 			);
@@ -188,6 +191,7 @@
 				C84CBE6C27DB2CAA003905CE /* LaunchScreen.storyboard in Resources */,
 				C84CBE6927DB2CAA003905CE /* Assets.xcassets in Resources */,
 				C84CBE6727DB2CA9003905CE /* Main.storyboard in Resources */,
+				C826927728364D1700CC1979 /* LinxtLogo.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

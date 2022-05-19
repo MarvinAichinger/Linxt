@@ -14,7 +14,7 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
     let noOfCellsInRow = 24
     var widthOfCell = 1.0
     
-    let gameManager: MultiplayerGameManager = MultiplayerGameManager()
+    var gameManager: MultiplayerGameManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()

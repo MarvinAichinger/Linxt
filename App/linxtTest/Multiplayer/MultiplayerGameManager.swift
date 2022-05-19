@@ -16,14 +16,23 @@ class MultiplayerGameManager {
     var gameRunning = true;
     var gameColors: GameColors = GameColors()
     
-    let manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt"])])
-    let socket: SocketIOClient
+    var manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt"])])
+    var socket: SocketIOClient!
     var roomID = "";
     
     var collectionView: UICollectionView!
     var noOfCellsInRow: Int!
     
-    init() {
+    func initSocketManager(joinRoomID: String) {
+        if (joinRoomID == "") {
+            self.manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "isPrivate" : "true"])])
+        }else {
+            self.manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "roomId" : joinRoomID])])
+        }
+    }
+    
+    func initSocket() {
+        
         self.socket = manager.defaultSocket
         
         socket.on(clientEvent: .connect) {data, ack in
