@@ -43,7 +43,7 @@ class MultiplayerMenuViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let view = segue.destination as? MultiplayerViewController {
+        if let view = segue.destination as? LoadingMenuViewController {
             view.gameManager = self.gameManager
         }
     }

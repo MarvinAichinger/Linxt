@@ -29,9 +29,15 @@ class MultiplayerGameManager {
     var collectionView: UICollectionView!
     var noOfCellsInRow: Int!
     
+    var createdRoom = false
+    var roomIDClosure: (() -> ())?
+    
+    var startGameClosure: (() -> ())?
+    
     func initSocketManager(joinRoomID: String) {
         if (joinRoomID == "") {
             self.manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "isPrivate" : "true"])])
+            self.createdRoom = true
         }else {
             self.manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "roomId" : joinRoomID])])
         }
@@ -48,6 +54,12 @@ class MultiplayerGameManager {
         socket.on("gameRoomID") {data, ack in
             print(data[0])
             self.roomID = data[0] as! String
+            
+            sleep(3000000000)
+            
+            if (self.createdRoom) {
+                self.roomIDClosure?()
+            }
         }
         
         socket.on("startGame") {data, ack in
@@ -58,6 +70,8 @@ class MultiplayerGameManager {
                     self.player = Players.player2
                 }
             }
+            sleep(3000000000)
+            self.startGameClosure?()
         }
         
         socket.on("pointSet") {data, ack in

@@ -103,6 +103,7 @@
                                 <state key="normal" title="join"/>
                                 <connections>
                                     <action selector="handleJoinRoom:" destination="4D7-px-4Dl" eventType="touchUpInside" id="YXA-sd-ZQZ"/>
+                                    <segue destination="636-YM-IMo" kind="presentation" modalPresentationStyle="fullScreen" id="Y7r-L1-sHa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="na1-Sw-fhL">
@@ -111,6 +112,7 @@
                                 <state key="normal" title="create new room"/>
                                 <connections>
                                     <action selector="handlePrivateRoom:" destination="4D7-px-4Dl" eventType="touchUpInside" id="yVy-k9-dHp"/>
+                                    <segue destination="636-YM-IMo" kind="presentation" modalPresentationStyle="fullScreen" id="Vng-8B-0eY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsk-zP-pVx">
@@ -119,7 +121,7 @@
                                 <state key="normal" title="search game"/>
                                 <connections>
                                     <action selector="handleSearchGame:" destination="4D7-px-4Dl" eventType="touchUpInside" id="NyW-1s-Apa"/>
-                                    <segue destination="ghz-AK-hu7" kind="modal" modalPresentationStyle="fullScreen" id="KVG-Dh-3tp"/>
+                                    <segue destination="636-YM-IMo" kind="presentation" modalPresentationStyle="fullScreen" id="DZL-vC-HwA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -135,15 +137,15 @@
             </objects>
             <point key="canvasLocation" x="1408.6956521739132" y="-440.625"/>
         </scene>
-        <!--View Controller-->
+        <!--Loading Menu View Controller-->
         <scene sceneID="x2n-pz-OB4">
             <objects>
-                <viewController id="636-YM-IMo" sceneMemberID="viewController">
+                <viewController id="636-YM-IMo" customClass="LoadingMenuViewController" customModule="linxtTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Eiy-GG-ljN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="searching ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnF-v1-Cr7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="waiting for enemy..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnF-v1-Cr7">
                                 <rect key="frame" x="20" y="273" width="374" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -162,6 +164,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="mainText" destination="cnF-v1-Cr7" id="SVc-uh-ABD"/>
+                        <outlet property="roomText" destination="fvI-bh-cwm" id="ARp-dj-Q5X"/>
                         <segue destination="ghz-AK-hu7" kind="presentation" identifier="toMultiplayerGame" modalPresentationStyle="fullScreen" id="Pp1-dv-2eP"/>
                     </connections>
                 </viewController>
@@ -381,7 +385,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="KVG-Dh-3tp"/>
+        <segue reference="Y7r-L1-sHa"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LinxtLogo" width="1281" height="462"/>
