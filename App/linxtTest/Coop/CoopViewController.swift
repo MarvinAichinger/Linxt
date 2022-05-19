@@ -10,14 +10,42 @@ import UIKit
 
 class CoopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var player1Label: UILabel!
+    @IBOutlet weak var player2Label: UILabel!
     
     let noOfCellsInRow = 24
     var widthOfCell = 1.0
     
     let gameManager: CoopGameManager = CoopGameManager()
     
+    let gameColors = GameColors()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        player1Label.text = ""
+        player2Label.text = ""
+        
+        self.gameManager.turnChangedClosure = {
+            self.turnChanged()
+        }
+        
+        turnChanged()
+    }
+    
+    func turnChanged() {
+        //print("turn changed  \(self.gameManager.turn)")
+        if (self.gameManager.turn == Players.player1) {
+            player1Label.backgroundColor = gameColors.blue
+            player2Label.backgroundColor = UIColor(cgColor: CGColor(gray: CGFloat(0), alpha: CGFloat(0)))
+            player2Label.textColor = UIColor.black
+            player1Label.textColor = UIColor.white
+        }else {
+            player2Label.backgroundColor = gameColors.red
+            player1Label.backgroundColor = UIColor(cgColor: CGColor(gray: CGFloat(0), alpha: CGFloat(0)))
+            player1Label.textColor = UIColor.black
+            player2Label.textColor = UIColor.white
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -35,6 +63,12 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if let view = collectionView as? CollectionView {
             view.setSize(newSize: self.widthOfCell)
         }
+        
+        //turn visualization
+        player1Label.layer.borderWidth = widthOfCell / 3
+        player2Label.layer.borderWidth = widthOfCell / 3
+        player1Label.layer.borderColor = gameColors.blueCG
+        player2Label.layer.borderColor = gameColors.redCG
         
         return CGSize(width: size, height: size)
     }
@@ -58,6 +92,29 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         cell.contentView.clipsToBounds = true
         cell.contentView.layer.cornerRadius = CGFloat(self.widthOfCell / 2.0)
+        
+        let row = floor(Double(indexPath.row / noOfCellsInRow))
+        let column = Double(indexPath.row % noOfCellsInRow)
+        
+        let red = (row == 0 || row == Double(self.noOfCellsInRow - 1))
+        let blue = (column == 0 || column == Double(self.noOfCellsInRow - 1))
+        
+        if (red) {
+            cell.contentView.layer.borderWidth = self.widthOfCell / 6
+            cell.contentView.layer.borderColor = gameColors.redCG
+            cell.contentView.backgroundColor = UIColor(cgColor: gameColors.redCG.copy(alpha: CGFloat(0.5))!)
+        }
+        
+        if (blue) {
+            cell.contentView.layer.borderWidth = self.widthOfCell / 6
+            cell.contentView.layer.borderColor = gameColors.blueCG
+            cell.contentView.backgroundColor = UIColor(cgColor: gameColors.blueCG.copy(alpha: CGFloat(0.5))!)
+        }
+        
+        if (red && blue) {
+            cell.contentView.layer.borderColor = CGColor(gray: CGFloat(0), alpha: CGFloat(0))
+            cell.contentView.backgroundColor = UIColor(cgColor: CGColor(gray: CGFloat(0), alpha: CGFloat(0)))
+        }
         
         return cell
     }

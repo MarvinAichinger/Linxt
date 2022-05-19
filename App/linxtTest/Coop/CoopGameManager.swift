@@ -10,8 +10,14 @@ import UIKit
 
 class CoopGameManager {
     
-    var turn = Players.player1;
-    var gameRunning = true;
+    var turnChangedClosure: (() -> ())?
+    var turn = Players.player1 {
+        didSet {
+            turnChangedClosure?()
+        }
+    }
+    
+    var gameRunning = true
     var gameColors: GameColors = GameColors()
     
     func handleClick(collectionView: UICollectionView, indexPath: IndexPath, noOfCellsInRow: Int) {

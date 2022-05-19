@@ -11,7 +11,13 @@ import SocketIO
 
 class MultiplayerGameManager {
     
-    var turn = Players.player1;
+    var turnChangedClosure: (() -> ())?
+    var turn = Players.player1 {
+        didSet {
+            turnChangedClosure?()
+        }
+    }
+    
     var player = Players.player1;
     var gameRunning = true;
     var gameColors: GameColors = GameColors()
