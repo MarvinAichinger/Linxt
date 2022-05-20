@@ -55,7 +55,7 @@ class MultiplayerGameManager {
             print(data[0])
             self.roomID = data[0] as! String
             
-            sleep(3000000000)
+            //Thread.sleep(forTimeInterval: 1)
             
             if (self.createdRoom) {
                 self.roomIDClosure?()
@@ -70,7 +70,7 @@ class MultiplayerGameManager {
                     self.player = Players.player2
                 }
             }
-            sleep(3000000000)
+            Thread.sleep(forTimeInterval: 1)
             self.startGameClosure?()
         }
         
