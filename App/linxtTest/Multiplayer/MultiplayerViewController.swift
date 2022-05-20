@@ -65,8 +65,8 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
         gameManager.setGameFieldAttributes(collectionView: collectionView, noOfCellsInRow: self.noOfCellsInRow)
         
         //turn visualization
-        player1Label.layer.borderWidth = widthOfCell / 3
-        player2Label.layer.borderWidth = widthOfCell / 3
+        player1Label.layer.borderWidth = CGFloat(widthOfCell / 3)
+        player2Label.layer.borderWidth = CGFloat(widthOfCell / 3)
         player1Label.layer.borderColor = gameColors.blueCG
         player2Label.layer.borderColor = gameColors.redCG
         
@@ -100,13 +100,13 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
         let blue = (column == 0 || column == Double(self.noOfCellsInRow - 1))
         
         if (red) {
-            cell.contentView.layer.borderWidth = self.widthOfCell / 6
+            cell.contentView.layer.borderWidth = CGFloat(self.widthOfCell / 6)
             cell.contentView.layer.borderColor = gameColors.redCG
             cell.contentView.backgroundColor = UIColor(cgColor: gameColors.redCG.copy(alpha: CGFloat(0.5))!)
         }
         
         if (blue) {
-            cell.contentView.layer.borderWidth = self.widthOfCell / 6
+            cell.contentView.layer.borderWidth = CGFloat(self.widthOfCell / 6)
             cell.contentView.layer.borderColor = gameColors.blueCG
             cell.contentView.backgroundColor = UIColor(cgColor: gameColors.blueCG.copy(alpha: CGFloat(0.5))!)
         }
