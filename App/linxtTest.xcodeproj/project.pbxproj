@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B0553362836D81E00A4B6F9 /* LoadingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0553352836D81E00A4B6F9 /* LoadingMenuViewController.swift */; };
+		7B14374B283CF6DA007A3A07 /* SPConfetti in Frameworks */ = {isa = PBXBuildFile; productRef = 7B14374A283CF6DA007A3A07 /* SPConfetti */; };
 		7B5BDD8D280ECF3E005BFBCF /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BDD8C280ECF3E005BFBCF /* Enums.swift */; };
 		7B76EFB527F5B6A800F82B3F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */; };
 		7B794FD92823DAB1002B61D5 /* CoopGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B794FD82823DAB1002B61D5 /* CoopGameManager.swift */; };
@@ -53,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8C963BB282E394D0007006F /* SocketIO in Frameworks */,
+				7B14374B283CF6DA007A3A07 /* SPConfetti in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +143,7 @@
 			name = linxtTest;
 			packageProductDependencies = (
 				C8C963BA282E394D0007006F /* SocketIO */,
+				7B14374A283CF6DA007A3A07 /* SPConfetti */,
 			);
 			productName = linxtTest;
 			productReference = C84CBE5C27DB2CA9003905CE /* linxtTest.app */;
@@ -176,6 +179,7 @@
 			mainGroup = C84CBE5327DB2CA9003905CE;
 			packageReferences = (
 				C8C963B9282E394D0007006F /* XCRemoteSwiftPackageReference "socket" */,
+				7B143749283CF6DA007A3A07 /* XCRemoteSwiftPackageReference "SPConfetti" */,
 			);
 			productRefGroup = C84CBE5D27DB2CA9003905CE /* Products */;
 			projectDirPath = "";
@@ -421,6 +425,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7B143749283CF6DA007A3A07 /* XCRemoteSwiftPackageReference "SPConfetti" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPConfetti";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		C8C963B9282E394D0007006F /* XCRemoteSwiftPackageReference "socket" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
@@ -432,6 +444,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7B14374A283CF6DA007A3A07 /* SPConfetti */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7B143749283CF6DA007A3A07 /* XCRemoteSwiftPackageReference "SPConfetti" */;
+			productName = SPConfetti;
+		};
 		C8C963BA282E394D0007006F /* SocketIO */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C8C963B9282E394D0007006F /* XCRemoteSwiftPackageReference "socket" */;

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -240,18 +241,35 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGE-eT-5pK">
+                                <rect key="frame" x="27" y="821" width="142" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="142" id="2CZ-6e-qWY"/>
+                                    <constraint firstAttribute="height" constant="47" id="d2A-Iq-O8A"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="surrender">
+                                    <imageReference key="image" image="flag.fill" catalog="system" symbolScale="large"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="handleSurrender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YJa-Br-b8b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="XeC-b2-pgx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="164.5" id="0sM-Gy-sQe"/>
+                            <constraint firstAttribute="bottom" secondItem="wGE-eT-5pK" secondAttribute="bottom" constant="28" id="AAD-yc-xtX"/>
                             <constraint firstItem="9Qz-MM-5NL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="MT2-85-FuC"/>
                             <constraint firstItem="QqI-Yp-GwQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Syh-Dv-m9K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XeC-b2-pgx" secondAttribute="trailing" constant="20" id="YpR-zS-cyv"/>
                             <constraint firstItem="XeC-b2-pgx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="anv-td-GXq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tPr-WM-zIh" secondAttribute="trailing" constant="20" id="bxk-tY-Ri3"/>
                             <constraint firstItem="tPr-WM-zIh" firstAttribute="top" secondItem="QqI-Yp-GwQ" secondAttribute="bottom" constant="34" id="eEU-qs-cT9"/>
+                            <constraint firstItem="wGE-eT-5pK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="27" id="fvm-8f-etg"/>
                             <constraint firstItem="QqI-Yp-GwQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="naY-i6-pAr"/>
                             <constraint firstItem="9Qz-MM-5NL" firstAttribute="top" secondItem="QqI-Yp-GwQ" secondAttribute="bottom" constant="34" id="yLl-kg-T7J"/>
                         </constraints>
@@ -389,11 +407,15 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LinxtLogo" width="1281" height="462"/>
+        <image name="flag.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

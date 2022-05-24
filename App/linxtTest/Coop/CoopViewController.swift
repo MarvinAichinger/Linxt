@@ -20,6 +20,8 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     let gameColors = GameColors()
     
+    var turn = Players.player1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,11 +42,15 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             player2Label.backgroundColor = UIColor(cgColor: CGColor(gray: CGFloat(0), alpha: CGFloat(0)))
             player2Label.textColor = UIColor.black
             player1Label.textColor = UIColor.white
+            
+            self.turn = Players.player1
         }else {
             player2Label.backgroundColor = gameColors.red
             player1Label.backgroundColor = UIColor(cgColor: CGColor(gray: CGFloat(0), alpha: CGFloat(0)))
             player1Label.textColor = UIColor.black
             player2Label.textColor = UIColor.white
+            
+            self.turn = Players.player2
         }
     }
     
@@ -206,6 +212,11 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
+    @IBAction func handleSurrender(_ sender: UIButton) {
+        
+        gameManager.surrender(player: self.turn)
+        
+    }
     
 }
 
@@ -217,5 +228,4 @@ extension CoopViewController: UIGestureRecognizerDelegate {
       return true
     }
 }
-
 
