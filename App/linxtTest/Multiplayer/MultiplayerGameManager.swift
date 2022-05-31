@@ -11,19 +11,40 @@ import SocketIO
 
 class MultiplayerGameManager {
     
-    var turn = Players.player1;
+    var turnChangedClosure: (() -> ())?
+    var turn = Players.player1 {
+        didSet {
+            turnChangedClosure?()
+        }
+    }
+    
     var player = Players.player1;
     var gameRunning = true;
     var gameColors: GameColors = GameColors()
     
-    let manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt"])])
-    let socket: SocketIOClient
+    var manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt"])])
+    var socket: SocketIOClient!
     var roomID = "";
     
     var collectionView: UICollectionView!
     var noOfCellsInRow: Int!
     
-    init() {
+    var createdRoom = false
+    var roomIDClosure: (() -> ())?
+    
+    var startGameClosure: (() -> ())?
+    
+    func initSocketManager(joinRoomID: String) {
+        if (joinRoomID == "") {
+            self.manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "isPrivate" : "true"])])
+            self.createdRoom = true
+        }else {
+            self.manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "roomId" : joinRoomID])])
+        }
+    }
+    
+    func initSocket() {
+        
         self.socket = manager.defaultSocket
         
         socket.on(clientEvent: .connect) {data, ack in
@@ -33,6 +54,12 @@ class MultiplayerGameManager {
         socket.on("gameRoomID") {data, ack in
             print(data[0])
             self.roomID = data[0] as! String
+            
+            //Thread.sleep(forTimeInterval: 1)
+            
+            if (self.createdRoom) {
+                self.roomIDClosure?()
+            }
         }
         
         socket.on("startGame") {data, ack in
@@ -43,6 +70,8 @@ class MultiplayerGameManager {
                     self.player = Players.player2
                 }
             }
+            Thread.sleep(forTimeInterval: 1)
+            self.startGameClosure?()
         }
         
         socket.on("pointSet") {data, ack in

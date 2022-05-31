@@ -7,11 +7,18 @@
 
 import Foundation
 import UIKit
+import SPConfetti
 
 class CoopGameManager {
     
-    var turn = Players.player1;
-    var gameRunning = true;
+    var turnChangedClosure: (() -> ())?
+    var turn = Players.player1 {
+        didSet {
+            turnChangedClosure?()
+        }
+    }
+    
+    var gameRunning = true
     var gameColors: GameColors = GameColors()
     
     func handleClick(collectionView: UICollectionView, indexPath: IndexPath, noOfCellsInRow: Int) {
@@ -132,10 +139,29 @@ class CoopGameManager {
             let winStatus = cell.buildConnectionsTo(cells: cellsForNewConnections)
             
             if (winStatus != Players.neutral) {
-                gameRunning = false;
+                gameFinished(winner: winStatus)
             }
             
         }
     }
     
+    func surrender(player: Players) {
+        if (player == Players.player1) {
+            gameFinished(winner: Players.player2)
+        }else {
+            gameFinished(winner: Players.player1)
+        }
+    }
+    
+    func gameFinished(winner: Players) {
+        gameRunning = false;
+        if (winner == Players.player1) {
+            SPConfettiConfiguration.particlesConfig.colors = [gameColors.blue]
+        }else {
+            SPConfettiConfiguration.particlesConfig.colors = [gameColors.red]
+        }
+        SPConfetti.startAnimating(.fullWidthToDown, particles: [.arc], duration: 5)
+    }
+    
 }
+
