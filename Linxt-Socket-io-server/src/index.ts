@@ -81,6 +81,7 @@ io.on("connection", (socket: Socket) => {
   } else {
     if (isPrivate) {
       createPrivateRoom(socket);
+      console.log("created");
     } else {
       normalSearch(socket);
     }
@@ -137,7 +138,9 @@ io.on("connection", (socket: Socket) => {
 });
 
 function normalSearch(socket: Socket) {
+  console.log("normalSearch");
   if (freeGameRooms.length == 0) {
+    console.log("new Room");
     let gameRoom = new GameRoom();
     gameRoom.gameroomId = generateGameRoomID();
     gameRoom.player1 = socket.id;
@@ -145,6 +148,7 @@ function normalSearch(socket: Socket) {
     freeGameRooms.push(gameRoom.gameroomId);
     socket.emit("gameRoomID", gameRoom.gameroomId);
   } else {
+    console.log("join Room");
     let gameRoom = gameRooms.get(freeGameRooms.splice(0, 1)[0]);
     if (gameRoom) {
       gameRoom!.player2 = socket.id;

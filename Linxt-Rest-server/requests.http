@@ -1,0 +1,33 @@
+GET http://localhost:3000/api/tasks HTTP/1.1
+
+################################################
+
+GET http://localhost:3000/api/tasks/1 HTTP/1.1
+
+####################################################
+
+
+POST http://localhost:3000/api/tasks HTTP/1.1
+Content-Type: application/json
+
+{
+    "action" : "idk",
+    "done" : false
+}
+
+##############################
+PUT http://localhost:3000/api/tasks/3 HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 3,
+    "action": "buy coke",
+    "done": true
+}
+
+################################
+
+DELETE http://localhost:3000/api/tasks HTTP/1.1
+
+################################
+DELETE http://localhost:3000/api/tasks/3 HTTP/1.1
