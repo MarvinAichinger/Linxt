@@ -1,0 +1,25 @@
+{
+  "name": "22-first-rest-api-toyotakakashi",
+  "version": "1.0.0",
+  "description": "Today we are going to create our first RESTful webservice.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1920-2ahitm-syt/22-first-rest-api-ToyotaKakashi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1920-2ahitm-syt/22-first-rest-api-ToyotaKakashi/issues"
+  },
+  "homepage": "https://github.com/1920-2ahitm-syt/22-first-rest-api-ToyotaKakashi#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.17.1",
+    "http-status-codes": "^1.4.0",
+    "mongodb": "4.5"
+  }
+}
