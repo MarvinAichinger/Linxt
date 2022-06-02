@@ -19,7 +19,11 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.17.1",
+    "google-auth-library": "^8.0.2",
     "http-status-codes": "^1.4.0",
-    "mongodb": "4.5"
+    "mongodb": "4.5",
+    "mongoose": "^6.3.5",
+    "passport": "^0.6.0",
+    "passport-google-oauth2": "^0.2.0"
   }
 }

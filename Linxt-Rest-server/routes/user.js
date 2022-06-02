@@ -13,10 +13,6 @@ const {
 // create router
 const router = express.Router();
 
-// init data storage
-
-// read all tasks
-
 // read single task
 router.get("/", (req, res) => {
   const identifier = req.body.identifier;
@@ -68,6 +64,8 @@ router.post("/addUser", (req, res) => {
   }
   res.status(CREATED).send();
 });
+
+
 
 // export router
 module.exports = router;
