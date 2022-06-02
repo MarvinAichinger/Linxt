@@ -18,6 +18,9 @@ class CoopGameManager {
         }
     }
     
+    var winner = Players.neutral
+    var finishGameClosure: (() -> ())?
+    
     var gameRunning = true
     var gameColors: GameColors = GameColors()
     
@@ -155,6 +158,10 @@ class CoopGameManager {
     
     func gameFinished(winner: Players) {
         gameRunning = false;
+        
+        self.winner = winner
+        finishGameClosure?()
+        
         if (winner == Players.player1) {
             SPConfettiConfiguration.particlesConfig.colors = [gameColors.blue]
         }else {

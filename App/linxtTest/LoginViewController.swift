@@ -10,6 +10,8 @@ import GoogleSignIn
 
 class LoginViewController: UIViewController {
 
+    var authentication: GIDAuthentication!
+    
     let signInConfig = GIDConfiguration(clientID: "769667831806-mcou0acoml622t102kdr563qrogtn0g1.apps.googleusercontent.com")
 
     
@@ -23,23 +25,10 @@ class LoginViewController: UIViewController {
                     guard error == nil else { return }
                     guard let authentication = authentication else { return }
 
-                    let idToken = authentication.idToken
+                    //let idToken = authentication.idToken
+                    self.authentication = authentication
                     // Send ID token to backend (example below).
-                    
-                    func tokenSignInExample(idToken: String) {
-                        guard let authData = try? JSONEncoder().encode(["idToken": idToken]) else {
-                            return
-                        }
-                        let url = URL(string: "https://yourbackend.example.com/tokensignin")!
-                        var request = URLRequest(url: url)
-                        request.httpMethod = "POST"
-                        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-                        let task = URLSession.shared.uploadTask(with: request, from: authData) { data, response, error in
-                            // Handle response from your backend.
-                        }
-                        task.resume()
-                    }
+                    self.performSegue(withIdentifier: "toMenu", sender: nil)
                     
                 }
           // If sign in succeeded, display the app's main content View.
@@ -51,7 +40,26 @@ class LoginViewController: UIViewController {
         print("loaded")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let view = segue.destination as? MenuViewController {
+            view.authentication = self.authentication
+        }
+    }
     
+    /*func tokenSignInExample(idToken: String) {
+        guard let authData = try? JSONEncoder().encode(["idToken": idToken]) else {
+            return
+        }
+        let url = URL(string: "https://yourbackend.example.com/tokensignin")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let task = URLSession.shared.uploadTask(with: request, from: authData) { data, response, error in
+            // Handle response from your backend.
+        }
+        task.resume()
+    }*/
 
 
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B0553362836D81E00A4B6F9 /* LoadingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0553352836D81E00A4B6F9 /* LoadingMenuViewController.swift */; };
 		7B14374B283CF6DA007A3A07 /* SPConfetti in Frameworks */ = {isa = PBXBuildFile; productRef = 7B14374A283CF6DA007A3A07 /* SPConfetti */; };
+		7B2FD8212849582300E69F86 /* OverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2FD8202849582300E69F86 /* OverlayViewController.swift */; };
 		7B5BDD8D280ECF3E005BFBCF /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BDD8C280ECF3E005BFBCF /* Enums.swift */; };
 		7B76EFB527F5B6A800F82B3F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */; };
 		7B794FD92823DAB1002B61D5 /* CoopGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B794FD82823DAB1002B61D5 /* CoopGameManager.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		7B0553352836D81E00A4B6F9 /* LoadingMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingMenuViewController.swift; sourceTree = "<group>"; };
+		7B2FD8202849582300E69F86 /* OverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayViewController.swift; sourceTree = "<group>"; };
 		7B5BDD8C280ECF3E005BFBCF /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		7B794FD82823DAB1002B61D5 /* CoopGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopGameManager.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		C8355C7F2833C68F004791F0 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				7B2FD8202849582300E69F86 /* OverlayViewController.swift */,
 				7B0553352836D81E00A4B6F9 /* LoadingMenuViewController.swift */,
 				C8355C832833C762004791F0 /* MenuViewController.swift */,
 				C8355C852833C9B5004791F0 /* MultiplayerMenuViewController.swift */,
@@ -236,6 +239,7 @@
 				7B0553362836D81E00A4B6F9 /* LoadingMenuViewController.swift in Sources */,
 				C84CBE6427DB2CA9003905CE /* CoopViewController.swift in Sources */,
 				C84CBE6027DB2CA9003905CE /* AppDelegate.swift in Sources */,
+				7B2FD8212849582300E69F86 /* OverlayViewController.swift in Sources */,
 				C83452E128462C6B00FC1FC4 /* LoginViewController.swift in Sources */,
 				C84CBE6227DB2CA9003905CE /* SceneDelegate.swift in Sources */,
 			);
