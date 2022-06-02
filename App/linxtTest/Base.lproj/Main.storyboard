@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dsM-Vw-DiJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dsM-Vw-DiJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -89,49 +87,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="game room" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IrI-M4-ZTa">
-                                <rect key="frame" x="90" y="478" width="235" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="game room" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IrI-M4-ZTa">
+                                <rect key="frame" x="156" y="653" width="102" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="102" id="lRN-aT-Psz"/>
+                                    <constraint firstAttribute="height" constant="34" id="nJy-fJ-JIG"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="gameRoomTextFieldValueChange:" destination="4D7-px-4Dl" eventType="editingChanged" id="GEE-cV-0Sd"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJJ-t1-5im">
-                                <rect key="frame" x="192" y="520" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="join"/>
-                                <connections>
-                                    <action selector="handleJoinRoom:" destination="4D7-px-4Dl" eventType="touchUpInside" id="YXA-sd-ZQZ"/>
-                                    <segue destination="636-YM-IMo" kind="presentation" modalPresentationStyle="fullScreen" id="Y7r-L1-sHa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="na1-Sw-fhL">
-                                <rect key="frame" x="150" y="404" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="create new room"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="na1-Sw-fhL">
+                                <rect key="frame" x="118.5" y="433" width="177" height="30"/>
+                                <color key="backgroundColor" red="0.99938577409999996" green="0.54547131059999998" blue="0.54507142310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="177" id="5Um-je-wrB"/>
+                                    <constraint firstAttribute="height" constant="30" id="uEA-h2-YCJ"/>
+                                </constraints>
+                                <state key="normal" title="create new room">
+                                    <color key="titleColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                </state>
                                 <connections>
                                     <action selector="handlePrivateRoom:" destination="4D7-px-4Dl" eventType="touchUpInside" id="yVy-k9-dHp"/>
                                     <segue destination="636-YM-IMo" kind="presentation" modalPresentationStyle="fullScreen" id="Vng-8B-0eY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsk-zP-pVx">
-                                <rect key="frame" x="163" y="270" width="89" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="search game"/>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsk-zP-pVx">
+                                <rect key="frame" x="118.5" y="371" width="177" height="30"/>
+                                <color key="backgroundColor" red="0.65970772499999997" green="0.89776259660000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PFL-aJ-xg7"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="QMy-sv-oqS"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="177" id="RcS-Sz-30a"/>
+                                    <constraint firstAttribute="width" constant="177" id="wY5-KH-8c5"/>
+                                </constraints>
+                                <state key="normal" title="search game">
+                                    <color key="titleColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                </state>
                                 <connections>
                                     <action selector="handleSearchGame:" destination="4D7-px-4Dl" eventType="touchUpInside" id="NyW-1s-Apa"/>
                                     <segue destination="636-YM-IMo" kind="presentation" modalPresentationStyle="fullScreen" id="DZL-vC-HwA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJJ-t1-5im">
+                                <rect key="frame" x="174.5" y="695" width="65" height="30"/>
+                                <color key="backgroundColor" red="0.71051645279999998" green="0.93311959509999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="PEh-MF-nS8"/>
+                                    <constraint firstAttribute="height" constant="30" id="PKZ-YF-tp2"/>
+                                </constraints>
+                                <state key="normal" title="join">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleJoinRoom:" destination="4D7-px-4Dl" eventType="touchUpInside" id="YXA-sd-ZQZ"/>
+                                    <segue destination="636-YM-IMo" kind="presentation" modalPresentationStyle="fullScreen" id="Y7r-L1-sHa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Zk9-JH-KeW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="IJJ-t1-5im" firstAttribute="centerX" secondItem="ZK9-ma-6C5" secondAttribute="centerX" id="775-g8-Lvk"/>
+                            <constraint firstItem="na1-Sw-fhL" firstAttribute="top" secondItem="wsk-zP-pVx" secondAttribute="bottom" constant="32" id="8Sz-ui-WyV"/>
+                            <constraint firstItem="na1-Sw-fhL" firstAttribute="centerX" secondItem="ZK9-ma-6C5" secondAttribute="centerX" id="Fu5-wh-RHw"/>
+                            <constraint firstItem="IrI-M4-ZTa" firstAttribute="centerX" secondItem="ZK9-ma-6C5" secondAttribute="centerX" id="Tbn-7N-KbG"/>
+                            <constraint firstItem="IJJ-t1-5im" firstAttribute="top" secondItem="IrI-M4-ZTa" secondAttribute="bottom" constant="8" symbolic="YES" id="Tci-Al-Z5B"/>
+                            <constraint firstItem="wsk-zP-pVx" firstAttribute="centerX" secondItem="ZK9-ma-6C5" secondAttribute="centerX" id="WRh-Ls-KYY"/>
+                            <constraint firstItem="IrI-M4-ZTa" firstAttribute="top" secondItem="na1-Sw-fhL" secondAttribute="bottom" constant="190" id="bM4-fY-sBY"/>
+                            <constraint firstItem="na1-Sw-fhL" firstAttribute="centerY" secondItem="ZK9-ma-6C5" secondAttribute="centerY" id="yev-lK-udD"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="createGameButton" destination="ZK9-ma-6C5" id="R0m-rY-UVv"/>
                         <outlet property="gameRoomTextField" destination="IrI-M4-ZTa" id="yNR-Li-wFv"/>
                         <outlet property="joinRoomButton" destination="IJJ-t1-5im" id="BOl-UI-U4d"/>
+                        <outlet property="searchGameButton" destination="ZK9-ma-6C5" id="9ii-wb-YP5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iia-wu-VlQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -249,9 +282,6 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="surrender">
-                                    <imageReference key="image" image="flag.fill" catalog="system" symbolScale="large"/>
-                                </buttonConfiguration>
                                 <connections>
                                     <action selector="handleSurrender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YJa-Br-b8b"/>
                                 </connections>
@@ -407,7 +437,9 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LinxtLogo" width="1281" height="462"/>
-        <image name="flag.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -416,6 +448,9 @@
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
