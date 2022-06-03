@@ -10,19 +10,31 @@ const client = new MongoClient(process.env.DB_URL, {
 
 const authClient = new OAuth2Client(process.env.CLIENT_ID);
 
-async function verify() {
+export async function verify(token) {
   const ticket = await authClient.verifyIdToken({
       idToken: token,
       audience: process.env.CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
       // Or, if multiple clients access the backend:
       //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
-  });
+  },
+  (err, result) => {
+      if (err) {
+          return {
+              success: false
+          }
+      }
+      return {
+        success: true,
+        result: result.getPayload()["sub"]
+      };
+  }
+  );
+
   const payload = ticket.getPayload();
   const userid = payload['sub'];
   // If request specified a G Suite domain:
   // const domain = payload['hd'];
 }
-verify().catch(console.error);
 
 
 
@@ -42,7 +54,7 @@ export async function getUserHistory(identifier) {
   }
 }
 
-export async function addUser(identifier) {
+export async function userExists(identifier) {
   try {
     await client.connect();
     const database = client.db("linxt");
@@ -57,9 +69,9 @@ export async function addUser(identifier) {
         matches: [],
       };
       await linxt.insertOne(newUser);
-      return true;
+      return false;
     }
-    return false;
+    return true;
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
