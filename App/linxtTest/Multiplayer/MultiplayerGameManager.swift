@@ -28,6 +28,8 @@ class MultiplayerGameManager {
     
     var winner = Players.neutral
     
+    var url = "http://172.17.217.10"
+    
     var manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt"])])
     var socket: SocketIOClient!
     var roomID = "";
@@ -258,10 +260,10 @@ class MultiplayerGameManager {
         if (!searchedForGame) {
             return
         }
-        guard let authData = try? JSONEncoder().encode(["idToken": self.authentication.idToken, "idClient": self.authentication.clientID, "won": won.description]) else {
+        guard let authData = try? JSONEncoder().encode(["token": self.authentication.idToken, "won": won.description]) else {
             return
         }
-        let url = URL(string: "https://yourbackend.example.com/tokensignin")!
+        let url = URL(string: "http://172.17.217.10:3100/api/user")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -270,6 +272,7 @@ class MultiplayerGameManager {
             // Handle response from your backend.
         }
         task.resume()
+        print("sent")
     }
     
 }

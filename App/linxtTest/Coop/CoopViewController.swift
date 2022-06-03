@@ -16,6 +16,8 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let noOfCellsInRow = 24
     var widthOfCell = 1.0
     
+
+    
     let gameManager: CoopGameManager = CoopGameManager()
     
     let gameColors = GameColors()
@@ -46,6 +48,8 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             player2Label.backgroundColor = UIColor(cgColor: CGColor(gray: CGFloat(0), alpha: CGFloat(0)))
             player2Label.textColor = UIColor.black
             player1Label.textColor = UIColor.white
+            player1Label.layer.cornerRadius = 10
+            player2Label.layer.cornerRadius = 10
             
             self.turn = Players.player1
         }else {
@@ -53,6 +57,8 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             player1Label.backgroundColor = UIColor(cgColor: CGColor(gray: CGFloat(0), alpha: CGFloat(0)))
             player1Label.textColor = UIColor.black
             player2Label.textColor = UIColor.white
+            player1Label.layer.cornerRadius = 10
+            player2Label.layer.cornerRadius = 10
             
             self.turn = Players.player2
         }
@@ -82,6 +88,8 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         //turn visualization
         player1Label.layer.borderWidth = CGFloat(exactly: widthOfCell / 3)!
         player2Label.layer.borderWidth = CGFloat(exactly: widthOfCell / 3)!
+        player1Label.layer.cornerRadius = 10
+        player2Label.layer.cornerRadius = 10
         player1Label.layer.borderColor = gameColors.blueCG
         player2Label.layer.borderColor = gameColors.redCG
         

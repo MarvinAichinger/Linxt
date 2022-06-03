@@ -27,6 +27,21 @@ class LoginViewController: UIViewController {
 
                     //let idToken = authentication.idToken
                     self.authentication = authentication
+                    
+                    guard let authData = try? JSONEncoder().encode(["token": self.authentication.idToken]) else {
+                        return
+                    }
+                    let url = URL(string: "http://172.17.217.10:3100/api/user/auth")!
+                    var request = URLRequest(url: url)
+                    request.httpMethod = "POST"
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+                    let task = URLSession.shared.uploadTask(with: request, from: authData) { data, response, error in
+                        print(response)
+                    }
+                    task.resume()
+                    print("sent")
+                    
                     // Send ID token to backend (example below).
                     self.performSegue(withIdentifier: "toMenu", sender: nil)
                     
