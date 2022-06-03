@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dsM-Vw-DiJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aF3-E5-1E3">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+>>>>>>> 65f122bddf532bd66f962b251741725d71ade20f
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="yko-5k-jxi">
+            <objects>
+                <viewController id="aF3-E5-1E3" customClass="LoginViewController" customModule="linxtTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zxE-Lc-KRU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IJE-Nk-APj" customClass="GIDSignInButton">
+                                <rect key="frame" x="87" y="370" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <action selector="loginButtonTouched:" destination="aF3-E5-1E3" eventType="touchUpInside" id="avb-pc-BYc"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wdL-8l-2iT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <segue destination="dsM-Vw-DiJ" kind="presentation" identifier="toMenu" modalPresentationStyle="fullScreen" id="k1f-HO-EdI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="idf-vD-V4v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-560.86956521739137" y="-1095.5357142857142"/>
+        </scene>
         <!--Menu View Controller-->
         <scene sceneID="VJO-tq-d0s">
             <objects>
@@ -308,6 +344,7 @@
                     <connections>
                         <outlet property="player1Label" destination="9Qz-MM-5NL" id="jc6-96-zAE"/>
                         <outlet property="player2Label" destination="tPr-WM-zIh" id="Ijq-yp-ijp"/>
+                        <segue destination="WMO-Mp-vjc" kind="presentation" identifier="showOverlay" modalPresentationStyle="overCurrentContext" id="VVu-sa-gwX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -325,6 +362,66 @@
                 </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-184.05797101449278" y="87.723214285714278"/>
+        </scene>
+        <!--Overlay View Controller-->
+        <scene sceneID="Nep-8T-qzy">
+            <objects>
+                <viewController id="WMO-Mp-vjc" customClass="OverlayViewController" customModule="linxtTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Ps-Nd-BbR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KuS-dU-x5s">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJp-SO-Pzd">
+                                        <rect key="frame" x="8" y="34" width="224" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="irr-uA-SK3"/>
+                                            <constraint firstAttribute="width" constant="224" id="zUA-W3-aaE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RD1-Fg-c3X">
+                                        <rect key="frame" x="8" y="89" width="224" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="224" id="cPU-ph-fiF"/>
+                                            <constraint firstAttribute="height" constant="31" id="nDg-rC-PoS"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="back"/>
+                                        <connections>
+                                            <segue destination="dsM-Vw-DiJ" kind="presentation" modalPresentationStyle="fullScreen" id="ZdG-aX-hOO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="kJp-SO-Pzd" firstAttribute="leading" secondItem="KuS-dU-x5s" secondAttribute="leading" constant="8" id="1Rb-7k-cLW"/>
+                                    <constraint firstItem="kJp-SO-Pzd" firstAttribute="top" secondItem="KuS-dU-x5s" secondAttribute="top" constant="34" id="5Zh-e9-6Fc"/>
+                                    <constraint firstAttribute="bottom" secondItem="RD1-Fg-c3X" secondAttribute="bottom" constant="8" id="7Ao-QV-rAu"/>
+                                    <constraint firstAttribute="width" constant="240" id="QIZ-86-fjr"/>
+                                    <constraint firstItem="RD1-Fg-c3X" firstAttribute="leading" secondItem="KuS-dU-x5s" secondAttribute="leading" constant="8" id="nEK-O0-qgQ"/>
+                                    <constraint firstAttribute="height" constant="128" id="zeP-4C-K1t"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pQI-W5-xTK"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KuS-dU-x5s" firstAttribute="centerY" secondItem="5Ps-Nd-BbR" secondAttribute="centerY" id="dQz-CP-nnY"/>
+                            <constraint firstItem="KuS-dU-x5s" firstAttribute="centerX" secondItem="5Ps-Nd-BbR" secondAttribute="centerX" id="fob-dx-4yD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="overlayTextField" destination="kJp-SO-Pzd" id="jJw-qW-yw0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1ej-iz-oNE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="611.59420289855075" y="969.64285714285711"/>
         </scene>
         <!--Multiplayer View Controller-->
         <scene sceneID="pNZ-LQ-1XO">
@@ -413,6 +510,7 @@
                     <connections>
                         <outlet property="player1Label" destination="EAa-2E-fFa" id="36z-Ri-sqk"/>
                         <outlet property="player2Label" destination="c9C-fj-yaI" id="oUB-98-Nnp"/>
+                        <segue destination="WMO-Mp-vjc" kind="presentation" identifier="showOverlayM" modalPresentationStyle="overCurrentContext" id="dXu-Vu-eEY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iUZ-pW-Lgl" sceneMemberID="firstResponder"/>
@@ -433,13 +531,18 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="dXu-Vu-eEY"/>
         <segue reference="Y7r-L1-sHa"/>
+        <segue reference="ZdG-aX-hOO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LinxtLogo" width="1281" height="462"/>
+<<<<<<< HEAD
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+=======
+>>>>>>> 65f122bddf532bd66f962b251741725d71ade20f
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

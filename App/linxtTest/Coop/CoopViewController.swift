@@ -34,6 +34,10 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             self.turnChanged()
         }
         
+        self.gameManager.finishGameClosure = {
+            self.gameFinished()
+        }
+        
         turnChanged()
     }
     
@@ -58,6 +62,11 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
             self.turn = Players.player2
         }
+    }
+    
+    func gameFinished() {
+        //print("view controller \(self.gameManager.winner)")
+        self.performSegue(withIdentifier: "showOverlay", sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -224,6 +233,12 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         gameManager.surrender(player: self.turn)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let view = segue.destination as? OverlayViewController {
+            view.labelText = "\(self.gameManager.winner) wins!"
+        }
     }
     
 }

@@ -9,23 +9,30 @@ const {
   CONFLICT,
   INTERNAL_SERVER_ERROR,
 } = require("http-status-codes");
+const { verify } = require("../database-requests");
 
 // create router
 const router = express.Router();
 
-// init data storage
-
-// read all tasks
-
 // read single task
-router.get("/", (req, res) => {
-  const identifier = req.body.identifier;
+router.get("/", async (req, res) => {
+  const identifier = req.body.token;
   if (!identifier) {
     res.sendStatus(BAD_REQUEST);
     return;
   }
+  const verification = await verify(identifier);
+  if(!verification.success) {
+    res.sendStatus(BAD_REQUEST).send();
+    return;
+  }
 
-  const history = getUserHistory(identifier);
+  if(!userExists(verification.result)) {
+    res.status(CREATED).send();
+    return;
+  }
+
+  const history = getUserHistory(verification.result);
 
   if (!history) {
     res.sendStatus(NOT_FOUND);
@@ -36,8 +43,8 @@ router.get("/", (req, res) => {
 });
 
 // create task
-router.post("/", (req, res) => {
-  const identifier = req.body.identifier;
+router.post("/", async (req, res) => {
+  const identifier = req.body.token;
   const match = req.body.match;
 
   if (!identifier || !match) {
@@ -45,27 +52,19 @@ router.post("/", (req, res) => {
     return;
   }
 
-  const result = addMatch(identifier, match);
+  const verification = await verify(identifier);
+  if(!verification.success) {
+    res.sendStatus(BAD_REQUEST).send();
+    return;
+  }
+
+  const result = addMatch(verification.result, match);
 
   if (!result) {
     res.sendStatus(NOT_FOUND);
     return;
   }
 
-  res.status(CREATED).send();
-});
-
-router.post("/addUser", (req, res) => {
-  const identifier = req.body.identifier;
-  if (!identifier) {
-    res.sendStatus(BAD_REQUEST);
-    return;
-  }
-  const result = addUser(identifier);
-  if (!result) {
-    res.sendStatus(CONFLICT);
-    return;
-  }
   res.status(CREATED).send();
 });
 

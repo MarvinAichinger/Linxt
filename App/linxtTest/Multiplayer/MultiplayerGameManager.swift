@@ -8,8 +8,12 @@
 import Foundation
 import UIKit
 import SocketIO
+import GoogleSignIn
+import SPConfetti
 
 class MultiplayerGameManager {
+    
+    var authentication: GIDAuthentication!
     
     var turnChangedClosure: (() -> ())?
     var turn = Players.player1 {
@@ -22,6 +26,8 @@ class MultiplayerGameManager {
     var gameRunning = true;
     var gameColors: GameColors = GameColors()
     
+    var winner = Players.neutral
+    
     var manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt"])])
     var socket: SocketIOClient!
     var roomID = "";
@@ -33,6 +39,9 @@ class MultiplayerGameManager {
     var roomIDClosure: (() -> ())?
     
     var startGameClosure: (() -> ())?
+    var finishGameClosure: (() -> ())?
+    
+    var searchedForGame = true;
     
     func initSocketManager(joinRoomID: String) {
         if (joinRoomID == "") {
@@ -41,6 +50,7 @@ class MultiplayerGameManager {
         }else {
             self.manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "roomId" : joinRoomID])])
         }
+        self.searchedForGame = false
     }
     
     func initSocket() {
@@ -213,7 +223,7 @@ class MultiplayerGameManager {
             let winStatus = cell.buildConnectionsTo(cells: cellsForNewConnections)
             
             if (winStatus != Players.neutral) {
-                gameRunning = false;
+                gameFinished(winner: winStatus)
             }
             
         }
@@ -222,6 +232,44 @@ class MultiplayerGameManager {
     func setGameFieldAttributes(collectionView: UICollectionView, noOfCellsInRow: Int) {
         self.collectionView = collectionView
         self.noOfCellsInRow = noOfCellsInRow
+    }
+    
+    func gameFinished(winner: Players) {
+        gameRunning = false;
+        
+        self.winner = winner
+        finishGameClosure?()
+        
+        if (winner == Players.player1) {
+            SPConfettiConfiguration.particlesConfig.colors = [gameColors.blue]
+        }else {
+            SPConfettiConfiguration.particlesConfig.colors = [gameColors.red]
+        }
+        SPConfetti.startAnimating(.fullWidthToDown, particles: [.arc], duration: 5)
+        
+        if (winner == player) {
+            sendFinishedGame(won: true)
+        }else {
+            sendFinishedGame(won: false)
+        }
+    }
+    
+    func sendFinishedGame(won: Bool) {
+        if (!searchedForGame) {
+            return
+        }
+        guard let authData = try? JSONEncoder().encode(["idToken": self.authentication.idToken, "idClient": self.authentication.clientID, "won": won.description]) else {
+            return
+        }
+        let url = URL(string: "https://yourbackend.example.com/tokensignin")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let task = URLSession.shared.uploadTask(with: request, from: authData) { data, response, error in
+            // Handle response from your backend.
+        }
+        task.resume()
     }
     
 }

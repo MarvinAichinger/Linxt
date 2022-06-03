@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import GoogleSignIn
 
 class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -28,6 +28,10 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
             self.turnChanged()
         }
         
+        self.gameManager.finishGameClosure = {
+            self.gameFinished()
+        }
+        
         turnChanged()
     }
     
@@ -44,6 +48,11 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
             player1Label.textColor = UIColor.black
             player2Label.textColor = UIColor.white
         }
+    }
+    
+    func gameFinished() {
+        //print("test")
+        self.performSegue(withIdentifier: "showOverlayM", sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -204,6 +213,16 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
         sender.setTranslation(.zero, in: view)
         
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let view = segue.destination as? OverlayViewController {
+            if (self.gameManager.winner == self.gameManager.player) {
+                view.labelText = "You win!"
+            }else {
+                view.labelText = "You lost!"
+            }
+        }
     }
     
     

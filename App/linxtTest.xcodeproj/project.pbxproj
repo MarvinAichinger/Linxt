@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		7B0553362836D81E00A4B6F9 /* LoadingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0553352836D81E00A4B6F9 /* LoadingMenuViewController.swift */; };
 		7B14374B283CF6DA007A3A07 /* SPConfetti in Frameworks */ = {isa = PBXBuildFile; productRef = 7B14374A283CF6DA007A3A07 /* SPConfetti */; };
+		7B2FD8212849582300E69F86 /* OverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2FD8202849582300E69F86 /* OverlayViewController.swift */; };
 		7B5BDD8D280ECF3E005BFBCF /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BDD8C280ECF3E005BFBCF /* Enums.swift */; };
 		7B76EFB527F5B6A800F82B3F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */; };
 		7B794FD92823DAB1002B61D5 /* CoopGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B794FD82823DAB1002B61D5 /* CoopGameManager.swift */; };
 		7B7BF8E427F623030014449A /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7BF8E327F623030014449A /* CollectionView.swift */; };
 		C826927728364D1700CC1979 /* LinxtLogo.svg in Resources */ = {isa = PBXBuildFile; fileRef = C826927628364D1700CC1979 /* LinxtLogo.svg */; };
+		C832558528489F7C00CDD983 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C832558428489F7C00CDD983 /* GoogleSignIn */; };
+		C832558728489F7C00CDD983 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C832558628489F7C00CDD983 /* GoogleSignInSwift */; };
+		C83452E128462C6B00FC1FC4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83452E028462C6B00FC1FC4 /* LoginViewController.swift */; };
+		C83452E328462E5E00FC1FC4 /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83452E228462E5E00FC1FC4 /* KeychainItem.swift */; };
 		C8355C842833C762004791F0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8355C832833C762004791F0 /* MenuViewController.swift */; };
 		C8355C862833C9B5004791F0 /* MultiplayerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8355C852833C9B5004791F0 /* MultiplayerMenuViewController.swift */; };
 		C84CBE6027DB2CA9003905CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE5F27DB2CA9003905CE /* AppDelegate.swift */; };
@@ -29,11 +34,15 @@
 
 /* Begin PBXFileReference section */
 		7B0553352836D81E00A4B6F9 /* LoadingMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingMenuViewController.swift; sourceTree = "<group>"; };
+		7B2FD8202849582300E69F86 /* OverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayViewController.swift; sourceTree = "<group>"; };
 		7B5BDD8C280ECF3E005BFBCF /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		7B794FD82823DAB1002B61D5 /* CoopGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopGameManager.swift; sourceTree = "<group>"; };
 		7B7BF8E327F623030014449A /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		C826927628364D1700CC1979 /* LinxtLogo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LinxtLogo.svg; sourceTree = "<group>"; };
+		C83452E028462C6B00FC1FC4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C83452E228462E5E00FC1FC4 /* KeychainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
+		C83452E42846356D00FC1FC4 /* linxtTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = linxtTest.entitlements; sourceTree = "<group>"; };
 		C8355C832833C762004791F0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C8355C852833C9B5004791F0 /* MultiplayerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerMenuViewController.swift; sourceTree = "<group>"; };
 		C84CBE5C27DB2CA9003905CE /* linxtTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = linxtTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +64,8 @@
 			files = (
 				C8C963BB282E394D0007006F /* SocketIO in Frameworks */,
 				7B14374B283CF6DA007A3A07 /* SPConfetti in Frameworks */,
+				C832558528489F7C00CDD983 /* GoogleSignIn in Frameworks */,
+				C832558728489F7C00CDD983 /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +75,7 @@
 		C8355C7F2833C68F004791F0 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				7B2FD8202849582300E69F86 /* OverlayViewController.swift */,
 				7B0553352836D81E00A4B6F9 /* LoadingMenuViewController.swift */,
 				C8355C832833C762004791F0 /* MenuViewController.swift */,
 				C8355C852833C9B5004791F0 /* MultiplayerMenuViewController.swift */,
@@ -90,6 +102,7 @@
 		C84CBE5E27DB2CA9003905CE /* linxtTest */ = {
 			isa = PBXGroup;
 			children = (
+				C83452E42846356D00FC1FC4 /* linxtTest.entitlements */,
 				C8355C7F2833C68F004791F0 /* Menu */,
 				C8C963B4282E35F10007006F /* Multiplayer */,
 				C8C963B3282E34A20007006F /* Coop */,
@@ -98,6 +111,8 @@
 				7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */,
 				7B5BDD8C280ECF3E005BFBCF /* Enums.swift */,
 				C84CBE6527DB2CA9003905CE /* Main.storyboard */,
+				C83452E028462C6B00FC1FC4 /* LoginViewController.swift */,
+				C83452E228462E5E00FC1FC4 /* KeychainItem.swift */,
 				7B7BF8E327F623030014449A /* CollectionView.swift */,
 				C84CBE6827DB2CAA003905CE /* Assets.xcassets */,
 				C826927628364D1700CC1979 /* LinxtLogo.svg */,
@@ -144,6 +159,8 @@
 			packageProductDependencies = (
 				C8C963BA282E394D0007006F /* SocketIO */,
 				7B14374A283CF6DA007A3A07 /* SPConfetti */,
+				C832558428489F7C00CDD983 /* GoogleSignIn */,
+				C832558628489F7C00CDD983 /* GoogleSignInSwift */,
 			);
 			productName = linxtTest;
 			productReference = C84CBE5C27DB2CA9003905CE /* linxtTest.app */;
@@ -180,6 +197,7 @@
 			packageReferences = (
 				C8C963B9282E394D0007006F /* XCRemoteSwiftPackageReference "socket" */,
 				7B143749283CF6DA007A3A07 /* XCRemoteSwiftPackageReference "SPConfetti" */,
+				C832558328489F7C00CDD983 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = C84CBE5D27DB2CA9003905CE /* Products */;
 			projectDirPath = "";
@@ -209,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C83452E328462E5E00FC1FC4 /* KeychainItem.swift in Sources */,
 				7B7BF8E427F623030014449A /* CollectionView.swift in Sources */,
 				C8355C842833C762004791F0 /* MenuViewController.swift in Sources */,
 				C8C963B6282E365F0007006F /* MultiplayerViewController.swift in Sources */,
@@ -220,6 +239,8 @@
 				7B0553362836D81E00A4B6F9 /* LoadingMenuViewController.swift in Sources */,
 				C84CBE6427DB2CA9003905CE /* CoopViewController.swift in Sources */,
 				C84CBE6027DB2CA9003905CE /* AppDelegate.swift in Sources */,
+				7B2FD8212849582300E69F86 /* OverlayViewController.swift in Sources */,
+				C83452E128462C6B00FC1FC4 /* LoginViewController.swift in Sources */,
 				C84CBE6227DB2CA9003905CE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,7 +389,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = linxtTest/linxtTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R3D5AQQPTT;
 				INFOPLIST_FILE = linxtTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -388,7 +411,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = linxtTest/linxtTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R3D5AQQPTT;
 				INFOPLIST_FILE = linxtTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -433,6 +458,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		C832558328489F7C00CDD983 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.2;
+			};
+		};
 		C8C963B9282E394D0007006F /* XCRemoteSwiftPackageReference "socket" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
@@ -448,6 +481,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7B143749283CF6DA007A3A07 /* XCRemoteSwiftPackageReference "SPConfetti" */;
 			productName = SPConfetti;
+		};
+		C832558428489F7C00CDD983 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C832558328489F7C00CDD983 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		C832558628489F7C00CDD983 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C832558328489F7C00CDD983 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 		C8C963BA282E394D0007006F /* SocketIO */ = {
 			isa = XCSwiftPackageProductDependency;
