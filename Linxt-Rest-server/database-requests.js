@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const {OAuth2Client} = require('google-auth-library');
+const { OAuth2Client } = require("google-auth-library");
 
 require("dotenv").config();
 
@@ -10,35 +10,28 @@ const client = new MongoClient(process.env.DB_URL, {
 
 const authClient = new OAuth2Client(process.env.CLIENT_ID);
 
-export async function verify(token) {
-  const ticket = await authClient.verifyIdToken({
+function verify(token) {
+  return authClient
+    .verifyIdToken({
       idToken: token,
-      audience: process.env.CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+      audience: process.env.CLIENT_ID, // Specify the CLIENT_ID of the app that accesses the backend
       // Or, if multiple clients access the backend:
       //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
-  },
-  (err, result) => {
-      if (err) {
-          return {
-              success: false
-          }
-      }
-      return {
-        success: true,
-        result: result.getPayload()["sub"]
-      };
-  }
-  );
-
-  const payload = ticket.getPayload();
-  const userid = payload['sub'];
+    })
+    .then((login) => {
+      const payload = login.getPayload();
+      const userid = payload["sub"];
+      return { success: true, result: userid };
+    })
+    .catch((err) => {
+      console.log(err);
+      return { success: false };
+    });
   // If request specified a G Suite domain:
   // const domain = payload['hd'];
 }
 
-
-
-export async function getUserHistory(identifier) {
+async function getUserHistory(identifier) {
   try {
     await client.connect();
     const database = client.db("linxt");
@@ -54,7 +47,7 @@ export async function getUserHistory(identifier) {
   }
 }
 
-export async function userExists(identifier) {
+async function userExists(identifier) {
   try {
     await client.connect();
     const database = client.db("linxt");
@@ -62,7 +55,7 @@ export async function userExists(identifier) {
     // Query for the user history if user exists
     const query = { user: identifier };
     const history = await linxt.findOne(query);
-    console.log(history);
+    console.log("History:" + history);
     if (!history) {
       const newUser = {
         user: identifier,
@@ -78,7 +71,7 @@ export async function userExists(identifier) {
   }
 }
 
-export async function addMatch(identifier, match) {
+async function addMatch(identifier, match) {
   try {
     await client.connect();
 
@@ -98,3 +91,5 @@ export async function addMatch(identifier, match) {
     await client.close();
   }
 }
+
+module.exports = { verify, getUserHistory, userExists, addMatch };

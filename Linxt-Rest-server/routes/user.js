@@ -9,30 +9,33 @@ const {
   CONFLICT,
   INTERNAL_SERVER_ERROR,
 } = require("http-status-codes");
-const { verify } = require("../database-requests");
+const { verify, getUserHistory, userExists } = require("../database-requests");
 
 // create router
 const router = express.Router();
 
 // read single task
-router.get("/", async (req, res) => {
+router.post("/auth", async (req, res) => {
   const identifier = req.body.token;
   if (!identifier) {
     res.sendStatus(BAD_REQUEST);
     return;
   }
   const verification = await verify(identifier);
-  if(!verification.success) {
+
+  if (!verification.success) {
     res.sendStatus(BAD_REQUEST).send();
     return;
   }
 
-  if(!userExists(verification.result)) {
+  const userStatus = await userExists(verification.result);
+
+  if (!userStatus) {
     res.status(CREATED).send();
     return;
   }
 
-  const history = getUserHistory(verification.result);
+  const history = await getUserHistory(verification.result);
 
   if (!history) {
     res.sendStatus(NOT_FOUND);
@@ -53,12 +56,12 @@ router.post("/", async (req, res) => {
   }
 
   const verification = await verify(identifier);
-  if(!verification.success) {
+  if (!verification.success) {
     res.sendStatus(BAD_REQUEST).send();
     return;
   }
 
-  const result = addMatch(verification.result, match);
+  const result = await addMatch(verification.result, match);
 
   if (!result) {
     res.sendStatus(NOT_FOUND);
