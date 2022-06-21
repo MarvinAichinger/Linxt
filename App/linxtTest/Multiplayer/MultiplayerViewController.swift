@@ -63,7 +63,7 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
             + flowLayout.sectionInset.right
             + (flowLayout.minimumInteritemSpacing * CGFloat(self.noOfCellsInRow - 1))
 
-        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(self.noOfCellsInRow))
+        let size = Double((collectionView.bounds.width - totalSpace) / CGFloat(self.noOfCellsInRow))
         
         self.widthOfCell = Double(size)
         

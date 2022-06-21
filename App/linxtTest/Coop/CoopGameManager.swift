@@ -162,11 +162,14 @@ class CoopGameManager {
         self.winner = winner
         finishGameClosure?()
         
-        if (winner == Players.player1) {
+        SPConfettiConfiguration.particlesConfig.colors.removeAll()
+        SPConfetti.stopAnimating()
+        /*if (winner == Players.player1) {
             SPConfettiConfiguration.particlesConfig.colors = [gameColors.blue]
         }else {
             SPConfettiConfiguration.particlesConfig.colors = [gameColors.red]
-        }
+        }*/
+        SPConfettiConfiguration.particlesConfig.colors = [UIColor.systemYellow]
         SPConfetti.startAnimating(.fullWidthToDown, particles: [.arc], duration: 5)
     }
     

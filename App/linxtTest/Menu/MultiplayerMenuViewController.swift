@@ -16,26 +16,11 @@ class MultiplayerMenuViewController: UIViewController {
     
     @IBOutlet weak var gameRoomTextField: UITextField!
     @IBOutlet weak var joinRoomButton: UIButton!
-
-    @IBOutlet weak var searchGameButton: UIButton!
-    
-    @IBOutlet weak var createGameButton: UIButton!
-    
-    
-    
-    let gameColors = GameColors()
-    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         joinRoomButton.isEnabled = false
-        joinRoomButton.isHidden = true
-        joinRoomButton.backgroundColor = gameColors.blue
-        joinRoomButton.layer.cornerRadius = 10
-        searchGameButton.layer.cornerRadius = 10
-        createGameButton.layer.cornerRadius = 10
-        
     }
     
     @IBAction func handleSearchGame(_ sender: UIButton) {
@@ -55,10 +40,8 @@ class MultiplayerMenuViewController: UIViewController {
     @IBAction func gameRoomTextFieldValueChange(_ sender: UITextField) {
         if (sender.text != nil && sender.text?.count == 5) {
             joinRoomButton.isEnabled = true
-            joinRoomButton.isHidden = false
         }else {
             joinRoomButton.isEnabled = false
-            joinRoomButton.isHidden = true
         }
     }
     

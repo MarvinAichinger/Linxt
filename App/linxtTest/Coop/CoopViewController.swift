@@ -10,13 +10,12 @@ import UIKit
 
 class CoopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var surrenderBtn: UIButton!
     @IBOutlet weak var player1Label: UILabel!
     @IBOutlet weak var player2Label: UILabel!
     
     let noOfCellsInRow = 24
     var widthOfCell = 1.0
-    
-
     
     let gameManager: CoopGameManager = CoopGameManager()
     
@@ -26,6 +25,8 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        surrenderBtn.layer.cornerRadius = 24
         
         player1Label.text = ""
         player2Label.text = ""
@@ -48,8 +49,6 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             player2Label.backgroundColor = UIColor(cgColor: CGColor(gray: CGFloat(0), alpha: CGFloat(0)))
             player2Label.textColor = UIColor.black
             player1Label.textColor = UIColor.white
-            player1Label.layer.cornerRadius = 10
-            player2Label.layer.cornerRadius = 10
             
             self.turn = Players.player1
         }else {
@@ -57,8 +56,6 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             player1Label.backgroundColor = UIColor(cgColor: CGColor(gray: CGFloat(0), alpha: CGFloat(0)))
             player1Label.textColor = UIColor.black
             player2Label.textColor = UIColor.white
-            player1Label.layer.cornerRadius = 10
-            player2Label.layer.cornerRadius = 10
             
             self.turn = Players.player2
         }
@@ -77,7 +74,7 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             + flowLayout.sectionInset.right
             + (flowLayout.minimumInteritemSpacing * CGFloat(self.noOfCellsInRow - 1))
 
-        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(self.noOfCellsInRow))
+        let size = Double((collectionView.bounds.width - totalSpace) / CGFloat(self.noOfCellsInRow))
         
         self.widthOfCell = Double(size)
         
@@ -88,8 +85,6 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         //turn visualization
         player1Label.layer.borderWidth = CGFloat(exactly: widthOfCell / 3)!
         player2Label.layer.borderWidth = CGFloat(exactly: widthOfCell / 3)!
-        player1Label.layer.cornerRadius = 10
-        player2Label.layer.cornerRadius = 10
         player1Label.layer.borderColor = gameColors.blueCG
         player2Label.layer.borderColor = gameColors.redCG
         
@@ -231,13 +226,32 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBAction func handleSurrender(_ sender: UIButton) {
         
-        gameManager.surrender(player: self.turn)
+        var alert = UIAlertController(title: "Surrender", message: "You will lose this game!", preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Surrender", style: .destructive, handler: { (action: UIAlertAction!) in
+            self.gameManager.surrender(player: self.turn)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("cancel")
+        }))
+        
+        
+        present(alert, animated: true, completion: nil)
+        
+        //gameManager.surrender(player: self.turn)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let view = segue.destination as? OverlayViewController {
-            view.labelText = "\(self.gameManager.winner) wins!"
+            var winnerT = ""
+            if (self.gameManager.winner == Players.player1) {
+                winnerT = "BLUE"
+            }else {
+                winnerT = "RED"
+            }
+            view.labelText = "\(winnerT) wins!"
         }
     }
     
