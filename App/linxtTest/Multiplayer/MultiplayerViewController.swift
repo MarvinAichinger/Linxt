@@ -33,6 +33,14 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
         }
         
         turnChanged()
+        
+        let defaults = UserDefaults.standard
+        if let playerName = defaults.string(forKey: "playerName") {
+            player1Label.text = playerName
+        }
+        if let enemyName = defaults.string(forKey: "enemyName") {
+            player2Label.text = enemyName
+        }
     }
     
     func turnChanged() {

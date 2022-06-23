@@ -43,6 +43,12 @@ class LoginViewController: UIViewController {
                     print("sent")
                     
                     // Send ID token to backend (example below).
+                    
+                    let defaults = UserDefaults.standard
+                    defaults.setValue(user.profile?.givenName, forKey: "playerName")
+                    
+                    print(defaults.string(forKey: "playerName"))
+                    
                     self.performSegue(withIdentifier: "toMenu", sender: nil)
                     
                 }

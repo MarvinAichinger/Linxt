@@ -30,7 +30,7 @@ class MultiplayerGameManager {
     
     var url = "http://172.17.217.10"
     
-    var manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt"])])
+    var manager = SocketManager(socketURL: URL(string: "172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "userName" : UserDefaults.standard.string(forKey: "playerName")])])
     var socket: SocketIOClient!
     var roomID = "";
     
@@ -47,10 +47,10 @@ class MultiplayerGameManager {
     
     func initSocketManager(joinRoomID: String) {
         if (joinRoomID == "") {
-            self.manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "isPrivate" : "true"])])
+            self.manager = SocketManager(socketURL: URL(string: url + ":3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "isPrivate" : "true", "userName" : UserDefaults.standard.string(forKey: "playerName")])])
             self.createdRoom = true
         }else {
-            self.manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "roomId" : joinRoomID])])
+            self.manager = SocketManager(socketURL: URL(string: url + ":3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "roomId" : joinRoomID, "userName" : UserDefaults.standard.string(forKey: "playerName")])])
         }
         self.searchedForGame = false
     }
@@ -83,6 +83,9 @@ class MultiplayerGameManager {
                 }
             }
             Thread.sleep(forTimeInterval: 1)
+            
+            UserDefaults.standard.setValue(data[1], forKey: "enemyName")
+            
             self.startGameClosure?()
         }
         
@@ -263,7 +266,7 @@ class MultiplayerGameManager {
         guard let authData = try? JSONEncoder().encode(["token": self.authentication.idToken, "won": won.description]) else {
             return
         }
-        let url = URL(string: "http://172.17.217.10:3100/api/user")!
+        let url = URL(string: url + ":3100/api/user")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
