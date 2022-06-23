@@ -46,9 +46,14 @@ router.post("/auth", async (req, res) => {
 });
 
 // create task
-router.post("/", async (req, res) => {
+router.post("", async (req, res) => {
   const identifier = req.body.token;
   const match = req.body.match;
+
+  console.log("new Match");
+
+  console.log(identifier);
+  console.log(match);
 
   if (!identifier || !match) {
     res.sendStatus(BAD_REQUEST);

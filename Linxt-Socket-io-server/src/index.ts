@@ -64,10 +64,12 @@ server.listen(3000, () => {
 
 let roomId: string | string[] | undefined = undefined;
 let isPrivate: string | string[] | undefined = undefined;
+let userName: string | string[] | undefined = undefined;
 
 io.use((socket, next) => {
   roomId = socket.handshake.query.roomId;
   isPrivate = socket.handshake.query.isPrivate;
+  userName = socket.handshake.query.userName;
   if (socket.handshake.query.token === "Linxt") {
     next();
   } else {
@@ -83,6 +85,7 @@ io.on("connection", (socket: Socket) => {
       createPrivateRoom(socket);
       console.log("created");
     } else {
+      console.log("normalSearch");
       normalSearch(socket);
     }
   }
@@ -91,12 +94,9 @@ io.on("connection", (socket: Socket) => {
     console.log(roomId);
     let gameRoom = gameRooms.get(roomId);
     if (gameRoom) {
-      console.log("room exists");
       if (gameRoom.player1 === socket.id) {
-        console.log("player 1");
         io.sockets.sockets.get(gameRoom.player2)?.emit("pointSet", point);
       } else {
-        console.log("player 2");
         io.sockets.sockets.get(gameRoom.player1)?.emit("pointSet", point);
       }
     }
@@ -110,6 +110,18 @@ io.on("connection", (socket: Socket) => {
         io.sockets.sockets.get(gameRoom.player1)?.emit("gameFinished");
       } else {
         io.sockets.sockets.get(gameRoom.player2)?.emit("gameFinished");
+      }
+    }
+  });
+
+  socket.on("surrender", (roomId: string) => {
+    let gameRoom = gameRooms.get(roomId);
+    if (gameRoom) {
+      gameRoom.status = GameStatus.finished;
+      if (gameRoom.player1 === socket.id) {
+        io.sockets.sockets.get(gameRoom.player2)?.emit("surrender");
+      } else {
+        io.sockets.sockets.get(gameRoom.player1)?.emit("surrender");
       }
     }
   });
@@ -144,6 +156,8 @@ function normalSearch(socket: Socket) {
     let gameRoom = new GameRoom();
     gameRoom.gameroomId = generateGameRoomID();
     gameRoom.player1 = socket.id;
+    gameRoom.player1Info.name = userName as string;
+    userName = undefined;
     gameRooms.set(gameRoom.gameroomId, gameRoom);
     freeGameRooms.push(gameRoom.gameroomId);
     socket.emit("gameRoomID", gameRoom.gameroomId);
@@ -152,15 +166,17 @@ function normalSearch(socket: Socket) {
     let gameRoom = gameRooms.get(freeGameRooms.splice(0, 1)[0]);
     if (gameRoom) {
       gameRoom!.player2 = socket.id;
+      gameRoom!.player2Info.name = userName as string;
+      userName = undefined;
       gameRoom!.status = GameStatus.playing;
       socket.emit("gameRoomID", gameRoom!.gameroomId);
       let random_boolean = Math.random() < 0.5;
       io.sockets.sockets
         .get(gameRoom!.player1)
-        ?.emit("startGame", random_boolean);
+        ?.emit("startGame", random_boolean, gameRoom!.player2Info.name);
       io.sockets.sockets
         .get(gameRoom!.player2)
-        ?.emit("startGame", !random_boolean);
+        ?.emit("startGame", !random_boolean, gameRoom!.player1Info.name);
     }
   }
 }
@@ -169,13 +185,17 @@ function joinGameRoom(socket: Socket, roomId: string) {
   let gameRoom = gameRooms.get(roomId);
   if (gameRoom) {
     gameRoom.player2 = socket.id;
+    gameRoom.player2Info.name = userName as string;
+    userName = undefined;
     gameRoom.status = GameStatus.playing;
     socket.emit("gameRoomID", gameRoom.gameroomId);
     let random_boolean = Math.random() < 0.5;
-    io.sockets.sockets.get(gameRoom.player1)?.emit("startGame", random_boolean);
+    io.sockets.sockets
+      .get(gameRoom.player1)
+      ?.emit("startGame", random_boolean, gameRoom.player2Info.name);
     io.sockets.sockets
       .get(gameRoom.player2)
-      ?.emit("startGame", !random_boolean);
+      ?.emit("startGame", !random_boolean, gameRoom.player1Info.name);
   } else {
     console.log("gameRoom not found");
     socket.disconnect();
@@ -186,6 +206,8 @@ function createPrivateRoom(socket: Socket) {
   let gameRoom = new GameRoom();
   gameRoom.gameroomId = generateGameRoomID();
   gameRoom.player1 = socket.id;
+  gameRoom.player1Info.name = userName as string;
+  userName = undefined;
   gameRooms.set(gameRoom.gameroomId, gameRoom);
   socket.emit("gameRoomID", gameRoom.gameroomId);
 }
