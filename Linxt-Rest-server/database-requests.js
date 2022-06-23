@@ -24,7 +24,7 @@ function verify(token) {
       return { success: true, result: userid };
     })
     .catch((err) => {
-      console.log(err);
+      //console.log(err);
       return { success: false };
     });
   // If request specified a G Suite domain:
@@ -39,7 +39,6 @@ async function getUserHistory(identifier) {
     // Query for the user history if user exists
     const query = { user: identifier };
     const history = await linxt.findOne(query);
-    console.log(history);
     return history;
   } finally {
     // Ensures that the client will close when you finish/error
@@ -55,7 +54,6 @@ async function userExists(identifier) {
     // Query for the user history if user exists
     const query = { user: identifier };
     const history = await linxt.findOne(query);
-    console.log("History:" + history);
     if (!history) {
       const newUser = {
         user: identifier,
