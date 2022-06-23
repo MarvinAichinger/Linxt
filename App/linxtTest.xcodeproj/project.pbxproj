@@ -22,6 +22,7 @@
 		C83452E328462E5E00FC1FC4 /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83452E228462E5E00FC1FC4 /* KeychainItem.swift */; };
 		C8355C842833C762004791F0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8355C832833C762004791F0 /* MenuViewController.swift */; };
 		C8355C862833C9B5004791F0 /* MultiplayerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8355C852833C9B5004791F0 /* MultiplayerMenuViewController.swift */; };
+		C83988C3286477D700E02D3E /* MatchHistoryControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83988C2286477D700E02D3E /* MatchHistoryControllerTableViewController.swift */; };
 		C84CBE6027DB2CA9003905CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE5F27DB2CA9003905CE /* AppDelegate.swift */; };
 		C84CBE6227DB2CA9003905CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE6127DB2CA9003905CE /* SceneDelegate.swift */; };
 		C84CBE6427DB2CA9003905CE /* CoopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84CBE6327DB2CA9003905CE /* CoopViewController.swift */; };
@@ -47,6 +48,7 @@
 		C83452E42846356D00FC1FC4 /* linxtTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = linxtTest.entitlements; sourceTree = "<group>"; };
 		C8355C832833C762004791F0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C8355C852833C9B5004791F0 /* MultiplayerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerMenuViewController.swift; sourceTree = "<group>"; };
+		C83988C2286477D700E02D3E /* MatchHistoryControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryControllerTableViewController.swift; sourceTree = "<group>"; };
 		C84CBE5C27DB2CA9003905CE /* linxtTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = linxtTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C84CBE5F27DB2CA9003905CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C84CBE6127DB2CA9003905CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				7B76EFB427F5B6A800F82B3F /* CollectionViewCell.swift */,
 				7B5BDD8C280ECF3E005BFBCF /* Enums.swift */,
 				C84CBE6527DB2CA9003905CE /* Main.storyboard */,
+				C83988C2286477D700E02D3E /* MatchHistoryControllerTableViewController.swift */,
 				C83452E028462C6B00FC1FC4 /* LoginViewController.swift */,
 				C83452E228462E5E00FC1FC4 /* KeychainItem.swift */,
 				7B7BF8E327F623030014449A /* CollectionView.swift */,
@@ -235,6 +238,7 @@
 				7B7BF8E427F623030014449A /* CollectionView.swift in Sources */,
 				C8355C842833C762004791F0 /* MenuViewController.swift in Sources */,
 				C8C963B6282E365F0007006F /* MultiplayerViewController.swift in Sources */,
+				C83988C3286477D700E02D3E /* MatchHistoryControllerTableViewController.swift in Sources */,
 				C8C963B8282E36C00007006F /* MultiplayerGameManager.swift in Sources */,
 				7B794FD92823DAB1002B61D5 /* CoopGameManager.swift in Sources */,
 				C8355C862833C9B5004791F0 /* MultiplayerMenuViewController.swift in Sources */,
