@@ -22,6 +22,8 @@ class MenuViewController: UIViewController {
             view.authentication = self.authentication
         }else if let view = segue.destination as? CoopViewController {
             view.authentication = self.authentication
+        }else if let view = segue.destination as? MatchHistoryControllerTableViewController {
+            view.authentication = self.authentication
         }
     }
 
