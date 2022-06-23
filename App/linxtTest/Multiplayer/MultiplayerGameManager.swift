@@ -30,9 +30,10 @@ class MultiplayerGameManager {
     
     var url = "http://172.17.217.10"
     
-    var manager = SocketManager(socketURL: URL(string: "172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "userName" : UserDefaults.standard.string(forKey: "playerName")])])
+    var manager = SocketManager(socketURL: URL(string: "172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "userName" : UserDefaults.standard.string(forKey: "playerName")!])])
     var socket: SocketIOClient!
     var roomID = "";
+    var starting = false
     
     var collectionView: UICollectionView!
     var noOfCellsInRow: Int!
@@ -47,10 +48,10 @@ class MultiplayerGameManager {
     
     func initSocketManager(joinRoomID: String) {
         if (joinRoomID == "") {
-            self.manager = SocketManager(socketURL: URL(string: url + ":3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "isPrivate" : "true", "userName" : UserDefaults.standard.string(forKey: "playerName")])])
+            self.manager = SocketManager(socketURL: URL(string: url + ":3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "isPrivate" : "true", "userName" : UserDefaults.standard.string(forKey: "playerName")!])])
             self.createdRoom = true
         }else {
-            self.manager = SocketManager(socketURL: URL(string: url + ":3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "roomId" : joinRoomID, "userName" : UserDefaults.standard.string(forKey: "playerName")])])
+            self.manager = SocketManager(socketURL: URL(string: url + ":3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "roomId" : joinRoomID, "userName" : UserDefaults.standard.string(forKey: "playerName")!])])
         }
         self.searchedForGame = false
     }
@@ -77,6 +78,7 @@ class MultiplayerGameManager {
         socket.on("startGame") {data, ack in
             print(data[0])
             if let starting = data[0] as? Bool {
+                self.starting = starting
                 if (!starting) {
                     //self.turn = Players.player2
                     self.player = Players.player2
@@ -84,7 +86,7 @@ class MultiplayerGameManager {
             }
             Thread.sleep(forTimeInterval: 1)
             
-            UserDefaults.standard.setValue(data[1], forKey: "enemyName")
+            UserDefaults.standard.setValue(data[1] as! String, forKey: "enemyName")
             
             self.startGameClosure?()
         }

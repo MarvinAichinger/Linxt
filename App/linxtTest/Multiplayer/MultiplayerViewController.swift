@@ -35,12 +35,23 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
         turnChanged()
         
         let defaults = UserDefaults.standard
-        if let playerName = defaults.string(forKey: "playerName") {
-            player1Label.text = playerName
+        if (gameManager.starting) {
+            if let playerName = defaults.string(forKey: "playerName") {
+                player1Label.text = playerName
+            }
+            if let enemyName = defaults.string(forKey: "enemyName") {
+                player2Label.text = enemyName
+            }
+        }else {
+            if let playerName = defaults.string(forKey: "playerName") {
+                player2Label.text = playerName
+            }
+            if let enemyName = defaults.string(forKey: "enemyName") {
+                player1Label.text = enemyName
+            }
         }
-        if let enemyName = defaults.string(forKey: "enemyName") {
-            player2Label.text = enemyName
-        }
+        
+        
     }
     
     func turnChanged() {
