@@ -296,6 +296,7 @@ class MultiplayerGameManager {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let task = URLSession.shared.uploadTask(with: request, from: authData) { data, response, error in
+            print(response)
             // Handle response from your backend.
         }
         task.resume()

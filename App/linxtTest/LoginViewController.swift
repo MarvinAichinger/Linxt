@@ -37,7 +37,11 @@ class LoginViewController: UIViewController {
                     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
                     let task = URLSession.shared.uploadTask(with: request, from: authData) { data, response, error in
-                        print(response)
+                        if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                            if let matches = try? JSONSerialization.jsonObject(with: data, options: []) {
+                                print(matches)
+                            }
+                        }
                     }
                     task.resume()
                     print("sent")
