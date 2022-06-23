@@ -287,7 +287,7 @@ class MultiplayerGameManager {
         if (!searchedForGame) {
             return
         }
-        guard let authData = try? JSONEncoder().encode(["token": self.authentication.idToken, "won": won.description]) else {
+        guard let authData = try? JSONEncoder().encode(["token": self.authentication.idToken, "match": won.description]) else {
             return
         }
         let url = URL(string: url + ":3100/api/user")!
