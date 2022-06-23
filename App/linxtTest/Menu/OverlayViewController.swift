@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class OverlayViewController: UIViewController {
 
@@ -13,12 +14,19 @@ class OverlayViewController: UIViewController {
     
     var labelText = ""
     
+    var authentication: GIDAuthentication!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.overlayTextField.text = labelText
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let view = segue.destination as? MenuViewController {
+            view.authentication = self.authentication
+        }
+    }
 
 
 }

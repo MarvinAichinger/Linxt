@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import GoogleSignIn
 
 class CoopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -22,6 +22,8 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let gameColors = GameColors()
     
     var turn = Players.player1
+    
+    var authentication: GIDAuthentication!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -252,6 +254,7 @@ class CoopViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 winnerT = "RED"
             }
             view.labelText = "\(winnerT) wins!"
+            view.authentication = self.authentication
         }
     }
     

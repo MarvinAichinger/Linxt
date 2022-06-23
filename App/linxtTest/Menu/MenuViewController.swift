@@ -20,6 +20,8 @@ class MenuViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let view = segue.destination as? MultiplayerMenuViewController {
             view.authentication = self.authentication
+        }else if let view = segue.destination as? CoopViewController {
+            view.authentication = self.authentication
         }
     }
 

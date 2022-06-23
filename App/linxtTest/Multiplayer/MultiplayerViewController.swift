@@ -258,6 +258,7 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
             }else {
                 view.labelText = "You lost!"
             }
+            view.authentication = gameManager.authentication
         }
     }
     
