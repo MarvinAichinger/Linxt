@@ -17,10 +17,17 @@ class MultiplayerMenuViewController: UIViewController {
     @IBOutlet weak var gameRoomTextField: UITextField!
     @IBOutlet weak var joinRoomButton: UIButton!
     
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var createRoomButton: UIButton!
+    @IBOutlet weak var searchGameButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         joinRoomButton.isEnabled = false
+        
+        searchGameButton.layer.cornerRadius = 10
+        createRoomButton.layer.cornerRadius = 10
+        backButton.layer.cornerRadius = 24
     }
     
     @IBAction func handleSearchGame(_ sender: UIButton) {
@@ -49,6 +56,8 @@ class MultiplayerMenuViewController: UIViewController {
         if let view = segue.destination as? LoadingMenuViewController {
             view.gameManager = self.gameManager
             self.gameManager.authentication = self.authentication
+        }else if let view = segue.destination as? MenuViewController {
+            view.authentication = self.authentication
         }
     }
 }

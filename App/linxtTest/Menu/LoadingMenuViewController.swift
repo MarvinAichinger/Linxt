@@ -11,6 +11,7 @@ import GoogleSignIn
 class LoadingMenuViewController: UIViewController {
     
 
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var roomText: UILabel!
     @IBOutlet weak var mainText: UILabel!
     
@@ -28,11 +29,15 @@ class LoadingMenuViewController: UIViewController {
         gameManager.startGameClosure = {
             self.performSegue(withIdentifier: "toMultiplayerGame", sender: nil)
         }
+        
+        backButton.layer.cornerRadius = 24
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let view = segue.destination as? MultiplayerViewController {
             view.gameManager = self.gameManager
+        }else if let view = segue.destination as? MenuViewController {
+            view.authentication = self.gameManager.authentication
         }
     }
 
