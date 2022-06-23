@@ -30,7 +30,7 @@ class MultiplayerGameManager {
     
     var url = "http://172.17.217.10"
     
-    var manager = SocketManager(socketURL: URL(string: "172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "userName" : UserDefaults.standard.string(forKey: "playerName")!])])
+    var manager = SocketManager(socketURL: URL(string: "http://172.17.217.10:3000")!, config: [.log(true), .compress, .connectParams(["token" : "Linxt", "userName" : UserDefaults.standard.string(forKey: "playerName")!])])
     var socket: SocketIOClient!
     var roomID = "";
     var starting = false
@@ -94,6 +94,14 @@ class MultiplayerGameManager {
         socket.on("pointSet") {data, ack in
             debugPrint(data[0])
             self.handleClick(index: data[0] as! Int, ui: false)
+        }
+        
+        socket.on("surrender") {data, ack in
+            if (self.starting) {
+                self.gameFinished(winner: Players.player1)
+            }else {
+                self.gameFinished(winner: Players.player2)
+            }
         }
         
         socket.connect()
@@ -247,17 +255,31 @@ class MultiplayerGameManager {
         self.winner = winner
         finishGameClosure?()
         
-        if (winner == Players.player1) {
+        SPConfettiConfiguration.particlesConfig.colors.removeAll()
+        SPConfetti.stopAnimating()
+        /*if (winner == Players.player1) {
             SPConfettiConfiguration.particlesConfig.colors = [gameColors.blue]
         }else {
             SPConfettiConfiguration.particlesConfig.colors = [gameColors.red]
-        }
+        }*/
+        SPConfettiConfiguration.particlesConfig.colors = [UIColor.systemYellow]
         SPConfetti.startAnimating(.fullWidthToDown, particles: [.arc], duration: 5)
         
         if (winner == player) {
             sendFinishedGame(won: true)
         }else {
             sendFinishedGame(won: false)
+        }
+        
+        socket.disconnect()
+    }
+    
+    func surrender() {
+        socket.emit("surrender", roomID)
+        if (starting) {
+            gameFinished(winner: Players.player2)
+        }else {
+            gameFinished(winner: Players.player1)
         }
     }
     

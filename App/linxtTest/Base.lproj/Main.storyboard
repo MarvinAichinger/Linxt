@@ -466,6 +466,25 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzy-eb-KtL">
+                                <rect key="frame" x="20" y="815" width="47" height="47"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="47" id="CFf-jc-V4h"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="Imz-G1-v0d"/>
+                                    <constraint firstAttribute="height" constant="47" id="knS-Ix-6iR"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="47" id="rom-EM-KO4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleSurrender:" destination="ghz-AK-hu7" eventType="touchUpInside" id="Z5x-kb-bwV"/>
+                                    <action selector="handleSurrender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gN7-wc-w8o"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qej-IJ-n4S"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -476,6 +495,8 @@
                             <constraint firstItem="c9C-fj-yaI" firstAttribute="top" secondItem="gjP-nc-OqG" secondAttribute="bottom" constant="34" id="A8q-Ru-cWn"/>
                             <constraint firstItem="Jhq-Zj-SWk" firstAttribute="top" secondItem="Qej-IJ-n4S" secondAttribute="top" constant="164.5" id="LNl-7K-jzK"/>
                             <constraint firstItem="Qej-IJ-n4S" firstAttribute="trailing" secondItem="Jhq-Zj-SWk" secondAttribute="trailing" constant="20" id="PvF-Yf-ypW"/>
+                            <constraint firstItem="qzy-eb-KtL" firstAttribute="bottom" secondItem="Qej-IJ-n4S" secondAttribute="bottom" id="REp-kg-Kb4"/>
+                            <constraint firstItem="qzy-eb-KtL" firstAttribute="leading" secondItem="Qej-IJ-n4S" secondAttribute="leading" constant="20" id="b6e-Ir-YEK"/>
                             <constraint firstItem="EAa-2E-fFa" firstAttribute="leading" secondItem="Qej-IJ-n4S" secondAttribute="leading" constant="20" id="diY-rP-xSE"/>
                             <constraint firstItem="EAa-2E-fFa" firstAttribute="top" secondItem="gjP-nc-OqG" secondAttribute="bottom" constant="34" id="e9L-jd-vVz"/>
                             <constraint firstItem="Jhq-Zj-SWk" firstAttribute="leading" secondItem="Qej-IJ-n4S" secondAttribute="leading" constant="20" id="i49-GB-AOs"/>
@@ -486,6 +507,7 @@
                     <connections>
                         <outlet property="player1Label" destination="EAa-2E-fFa" id="36z-Ri-sqk"/>
                         <outlet property="player2Label" destination="c9C-fj-yaI" id="oUB-98-Nnp"/>
+                        <outlet property="surrenderButton" destination="qzy-eb-KtL" id="67p-sg-Pzi"/>
                         <segue destination="WMO-Mp-vjc" kind="presentation" identifier="showOverlayM" modalPresentationStyle="overCurrentContext" id="dXu-Vu-eEY"/>
                     </connections>
                 </viewController>

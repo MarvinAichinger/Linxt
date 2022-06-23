@@ -19,6 +19,7 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
     
     var gameManager: MultiplayerGameManager!
     
+    @IBOutlet weak var surrenderButton: UIButton!
     let gameColors = GameColors()
     
     override func viewDidLoad() {
@@ -51,6 +52,7 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
             }
         }
         
+        surrenderButton.layer.cornerRadius = 24
         
     }
     
@@ -232,6 +234,21 @@ class MultiplayerViewController: UIViewController, UICollectionViewDelegate, UIC
         sender.setTranslation(.zero, in: view)
         
         
+    }
+    
+    @IBAction func handleSurrender(_ sender: UIButton) {
+        var alert = UIAlertController(title: "Surrender", message: "You will lose this game!", preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Surrender", style: .destructive, handler: { (action: UIAlertAction!) in
+            self.gameManager.surrender()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("cancel")
+        }))
+        
+        
+        present(alert, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
